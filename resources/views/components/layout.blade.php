@@ -12,10 +12,10 @@
 <body>
     <nav>
         <ul class="bg-red-500 text-white p-7 flex gap-5 justify-between">
-            <div>
-                <h1>Clouty.com</h1>
+            <div class="flex items-center">
+                <h1 class="text-4xl">Clouty.com</h1>
             </div>
-            <div class="flex gap-5">
+            <div class="flex gap-5 items-center">
                 <li>
                     <x-nav-link route="home">Home</x-nav-link>
                 </li>
@@ -23,15 +23,16 @@
                     <x-nav-link route="cursos">Cursos</x-nav-link>
                 </li>
                 <li>
-                    <x-nav-link route="blog">Blog</x-nav-link>
+                    <x-nav-link route="articulos">Articulos</x-nav-link>
                 </li>
             </div>
 
             <div>
-                <ul>
-                    <li>
+                <ul class="flex gap-5">
+                    <li class="bg-red-700 py-2 px-6 rounded-xl">
                         Login
                     </li>
+                    <li class="bg-red-700 py-2 px-6 rounded-xl">admin</li>
                 </ul>
             </div>
     </nav>

@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="font-sans">
     <nav>
         <ul class="bg-red-500 text-white p-7 flex gap-5 justify-between">
             <div class="flex items-center">

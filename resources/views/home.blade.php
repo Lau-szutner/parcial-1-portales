@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout class="font-serif">
     <x-slot:title>Home</x-slot:title>
 
     <main>
@@ -28,6 +28,26 @@
             <button class="bg-red-500 py-2 px-6 rounded-xl text-white">
                 Cursos
             </button>
+        </section>
+        <section class="container mx-auto flex flex-col items-center">
+            <h2 class="text-5xl my-10">Los mejores articulos de la web</h2>
+
+            <div class="grid grid-cols-3 gap-4">
+                @foreach ($articles as $article)
+                    <div class="flex flex-col bg-red-400 p-4 rounded-lg gap-5">
+                        <h2 class="text-2xl">{{ $article->title }}</h2>
+                        <p>Autor: {{ $article->author }}</p>
+                        <img src="{{ $article->img }}" alt="Imagen del artículo {{ $article->title }}"
+                            class="w-full h-auto rounded-lg">
+                        <p>Categoria: {{ $article->category }}</p>
+                        {{-- <p>{{$article->time-to-read}}</p> --}}
+
+                        <p>Noticia {{ $article->id }}</p>
+                        <button class="bg-red-500 py-3 px-5 rounded-lg">Leer</button>
+                    </div>
+                @endforeach
+            </div>
+
         </section>
     </main>
 </x-layout>

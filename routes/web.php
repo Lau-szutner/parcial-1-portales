@@ -12,3 +12,9 @@ Route::get('/cursos', [\App\Http\Controllers\CursosController::class, 'cursos'])
 
 Route::get('/articulos', [\App\Http\Controllers\ArticulosController::class, 'articulos'])
     ->name('articulos');
+
+
+
+
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])
+    ->name('login');

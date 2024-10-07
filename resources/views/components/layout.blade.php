@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }} :: Clouty</title>
 
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="../css/app.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -25,7 +25,7 @@
                     <x-nav-link route="cursos">Cursos</x-nav-link>
                 </li>
                 <li>
-                    <x-nav-link route="articulos">Articulos</x-nav-link>
+                    <x-nav-link route="articulos.index">Articulos</x-nav-link>
                 </li>
             </div>
             <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">

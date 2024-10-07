@@ -9,8 +9,12 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
 Route::get('/cursos', [\App\Http\Controllers\CursosController::class, 'cursos'])
     ->name('cursos');
 
-Route::get('/articulos', [\App\Http\Controllers\ArticulosController::class, 'articulos'])
-    ->name('articulos');
+Route::get('/articulos', [\App\Http\Controllers\ArticlesController::class, 'index'])
+    ->name('articulos.index');
+
+Route::get('/articulos/{id}', [\App\Http\Controllers\ArticlesController::class, 'view'])
+    ->name('articles.view')
+    ->whereNumber('id');
 
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])
     ->name('login');

@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ */
+?>
+
+
 <x-layout>
     <x-slot:title>Artículos</x-slot:title>
 
@@ -16,7 +23,14 @@
                     </p>
                     <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Categoría: {{ $article->category }}</p>
                     <button
-                        class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">Leer</button>
+                        class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">
+
+
+
+                        <a href="{{ route('articles.view', ['id' => $article->id]) }}">Leer</a>
+
+
+                    </button>
                 </div>
             @endforeach
         </div>

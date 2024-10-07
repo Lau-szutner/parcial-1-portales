@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }} :: Clouty</title>
 
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 

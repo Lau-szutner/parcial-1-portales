@@ -14,7 +14,7 @@
 
             <button type="submit" class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">Iniciar</button>
 
-            <a href="/admin/dashboard">Admin</a>
+            <x-nav-link route="admin.dashboard">Home</x-nav-link>
         </form>
     </main>
 </x-layout>

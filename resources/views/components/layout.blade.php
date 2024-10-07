@@ -31,6 +31,7 @@
             <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
                 <x-nav-link route="login">Login</x-nav-link>
             </div>
+        </ul>
     </nav>
 
     {{ $slot }}

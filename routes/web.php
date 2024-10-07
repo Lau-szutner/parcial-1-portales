@@ -20,13 +20,13 @@ Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])
     ->name('login');
 
 Route::get('admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'dashboard'])
-    ->name('admin.dashboard');
+    ->name('dashboard');
 
 
-Route::get('admin/dashboard/create', [\App\Http\Controllers\DashboardController::class, 'create'])
+Route::get('admin/create', [\App\Http\Controllers\DashboardController::class, 'create'])
     ->name('create');
 
-Route::post('admin/dashboard/create', [\App\Http\Controllers\DashboardController::class, 'store'])
+Route::post('admin/create', [\App\Http\Controllers\DashboardController::class, 'store'])
     ->name('store');
 
 // Route::get('admin/dashboard/{id}', [\App\Http\Controllers\DashboardController::class, 'create'])

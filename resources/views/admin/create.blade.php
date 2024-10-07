@@ -25,8 +25,8 @@
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="Autor">Autor</label>
-            <input type="text" name="Autor" id="Autor" class="border-2">
+            <label for="author">Autor</label>
+            <input type="text" name="author" id="author" class="border-2">
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
@@ -34,8 +34,8 @@
             <input type="text" name="content_path" id="content_path" class="border-2">
         </div>
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="descripcion">descripcion</label>
-            <input type="text" name="descripcion" id="descripcion" class="border-2">
+            <label for="excerpt">descripcion</label>
+            <input type="text" name="excerpt" id="excerpt" class="border-2">
         </div>
 
         <button type="submit" class="text-white bg-[var(--primary-color)] p-4 rounded-xl">Publicar</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\In;
 
 class DashboardController extends Controller
 {
@@ -56,7 +57,6 @@ class DashboardController extends Controller
             'article' =>  Article::findOrFail($id)
         ]);
     }
-
     public function destroy(int $id)
     {
         $article =  Article::findOrFail($id);
@@ -64,5 +64,42 @@ class DashboardController extends Controller
         return redirect()
             ->route('dashboard')
             ->with('feedback.message', 'El artículo se <b>' . e($article['title']) . ' </b> se elimino exitosamente');
+    }
+
+
+    public function edit(int $id)
+    {
+        return view('admin.edit', [
+            'article' =>  Article::findOrFail($id)
+        ]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+
+        $request->validate([
+            'title' => 'required|string|min:2',
+            'img' => '|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|string|min:2',
+            'time-to-read' => 'required|string|min:10',
+            'author' => 'required|string|min:2',
+            'body' => 'required|string|min:10',
+            'excerpt' => 'required|string',
+        ], [
+            'title.requiered' => 'El titulo es requerido.',
+            'img' => 'La imagen es requerida',
+            'category.required' => 'La categoria es requerida',
+            'time-to-read.required' => 'El tiempo aproximado es requerido',
+            'author.required' => 'El autor es requerido',
+            'body.required' => 'El body es requerido',
+            'excerpt.required' => 'La descripcion es requerida',
+
+        ]);
+
+        $article = Article::findOrFail($id);
+        $article->update($request->except('_token'));
+        return redirect()
+            ->route('dashboard')
+            ->with('feedback.message', 'El artículo se <b>' . e($article['title']) . ' </b> se edito exitosamente');
     }
 }

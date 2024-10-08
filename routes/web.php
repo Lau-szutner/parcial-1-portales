@@ -34,5 +34,10 @@ Route::get('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardCont
 Route::post('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardController::class, 'destroy'])
     ->name('articles.view');
 
+Route::get('admin/dashboard/{id}/editar', [\App\Http\Controllers\DashboardController::class, 'edit'])
+    ->name('articles.view');
+Route::post('admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
+    ->name('articles.view');
+
 // Route::get('admin/dashboard/{id}', [\App\Http\Controllers\DashboardController::class, 'create'])
 //     ->name('admin.dashboard.create');

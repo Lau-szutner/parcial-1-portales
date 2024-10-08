@@ -42,9 +42,11 @@
                         <td class="border-2 p-2 border-zinc-400"><a href="{{ $article->content_path }}">Read more</a>
                         </td>
                         <td class="border-2 p-2 border-zinc-400 h-fit ">
-                            <div>
+                            <div class="flex gap-2">
                                 <a href="{{ url('admin/dashboard/' . $article->id . '/eliminar') }}"
                                     class="p-4 bg-red-500 rounded-md">Eliminar</a>
+                                <a href="{{ url('admin/dashboard/' . $article->id . '/editar') }}"
+                                    class="p-4 bg-zinc-500 rounded-md">Editar</a>
                             </div>
                         </td>
                     </tr>

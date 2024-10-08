@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth; // Importa la clase Auth
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rules\ArrayRule;
@@ -34,13 +35,13 @@ class DashboardController extends Controller
 
     ];
 
-    // public function dashboard()
-    // {
-    //     $articles = Article::all();
-    //     return view('admin.dashboard', [
-    //         'articles' => $articles,
-    //     ]);
-    // }
+    public function dashboard()
+    {
+        $articles = Article::all();
+        return view('admin.dashboard', [
+            'articles' => $articles,
+        ]);
+    }
 
     public function create()
     {
@@ -59,12 +60,34 @@ class DashboardController extends Controller
             $this->validationRules,
             $this->validationMessages
         );
-        $data = $request->except(['_token']);
+
+        // Manejar la carga de la imagen, si existe
+        if ($request->hasFile('img')) {
+            // Obtener el archivo de la imagen
+            $image = $request->file('img');
+
+            // Generar un nombre único para la imagen
+            $imageName = time() . '_' . $image->getClientOriginalName();
+
+            // Almacenar la imagen en la carpeta public/images
+            $image->move(public_path('images'), $imageName);
+
+            // Actualizar el campo 'img' en los datos a guardar
+            $data = $request->except(['_token']);
+            $data['img'] = 'images/' . $imageName; // Guardamos la ruta accesible
+        } else {
+            // Si no se subió ninguna imagen, solo excluimos el campo 'img' de los datos
+            $data = $request->except(['_token', 'img']);
+        }
+
+        // Crear el artículo
         Article::create($data);
+
         return redirect()
             ->route('dashboard')
             ->with('feedback.message', 'El artículo se <b>' . e($data['title']) . ' </b> publicó exitosamente');
     }
+
 
     public function delete(int $id)
     {
@@ -107,9 +130,32 @@ class DashboardController extends Controller
 
     public function doLogin(Request $request)
     {
-        $articles = Article::all();
-        return view('admin.dashboard', [
-            'articles' => $articles,
-        ]);
+        // $articles = Article::all();
+        // return view('admin.dashboard', [
+        //     'articles' => $articles,
+        // ]);
+
+
+        $credentials = $request->only(['email', 'password']);
+        if (!Auth::attempt($credentials)) {
+            return redirect()
+                ->route('login')
+                ->with('feedback.message', 'Las credenciales son incorrectas')
+                ->withInput();
+        }
+        return redirect()
+            ->route('dashboard')
+            ->with('feedback.message', 'Sesion iniciada');
+    }
+
+
+    public function doLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()
+            ->route('home')
+            ->with('feedback.message', 'Sesion cerrada');
     }
 }

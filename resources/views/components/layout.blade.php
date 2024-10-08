@@ -14,11 +14,11 @@
 
 <body class="font-sans bg-[var(--accent-color)]">
     <nav>
-        <ul class="bg-[var(--primary-color)] text-white p-7 flex gap-5 justify-between">
+        <div class="bg-[var(--primary-color)] text-white p-6 flex justify-between">
             <div class="flex items-center">
                 <h1 class="text-4xl">Clouty.com</h1>
             </div>
-            <div class="flex gap-5 items-center">
+            <ul class="flex gap-10 items-center">
                 <li>
                     <x-nav-link route="home">Home</x-nav-link>
                 </li>
@@ -28,16 +28,28 @@
                 <li>
                     <x-nav-link route="articulos.index">Articulos</x-nav-link>
                 </li>
-            </div>
+            </ul>
+            @auth
+                <div class="flex flex-col gap-2">
+                    <form action="{{route('admin.doLogout')}}" method="post">
+                        @csrf
+                            <button type="submit" class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">{{auth()->user()->email}}(cerrar session)
+                            </button>
+                    </form>
+                    <a href="{{route('dashboard')}}" class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
+                </div>
+            @else
             <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
-                <x-nav-link route="login">Login</x-nav-link>
+                <x-nav-link route="login" class="text-center">Login</x-nav-link>
             </div>
-        </ul>
+            @endauth
+
+        </div>
     </nav>
 
 
     @if (session()->has('feedback.message'))
-        <div class="bg-green-500 p-10 rounded-xl m-10 w-fit">{!! session()->get('feedback.message') !!}</div>
+        <div class="bg-green-500 p-5 rounded-xl m-10 w-fit">{!! session()->get('feedback.message') !!}</div>
     @endif
     <main>
         {{ $slot }}

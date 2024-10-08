@@ -5,7 +5,9 @@
 <x-layout>
     <x-slot:title>Admin
     </x-slot:title>
-
+    @auth
+        
+    
     <h1 class="text-4xl text-center my-10">Articulos</h1>
     <section class="flex flex-col">
         <table class="container mx-auto border-2">
@@ -29,11 +31,7 @@
                         <td class="border-2 p-2 border-zinc-400">{{ $article->id }}</td>
                         <td class="border-2 p-2 border-zinc-400">{{ $article->title }}</td>
                         <td class="border-2 p-2 border-zinc-400">
-                            @if ($article->img)
-                                <img src="{{ $article->img }}" alt="Image for {{ $article->title }}" width="100">
-                            @else
-                                No image
-                            @endif
+                        <img src="{{ asset($article->img) }}" alt="Image for {{ $article->title }}" width="100">
                         </td>
                         <td class="border-2 p-2 border-zinc-400">{{ $article->category }}</td>
                         <td class="border-2 p-2 border-zinc-400">{{ $article->time_to_read }} min</td>
@@ -65,7 +63,7 @@
 
     </section>
 
-
+@endauth
 
 
 

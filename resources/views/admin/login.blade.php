@@ -5,8 +5,8 @@
 
         <form action="{{route('admin.doLogin')}}" class="grid bg-[var(--primary-color)] p-10 rounded-lg w-6/12 gap-8">
 
-            <label for="name" class="text-2xl text-white">Name</label>
-            <input type="text" name="name" id="name" class="h-10 w-50 p-5 rounded-lg"
+            <label for="email" class="text-2xl text-white">Email</label>
+            <input type="email" name="email" id="email" class="h-10 w-50 p-5 rounded-lg"
                 placeholder="Ingrese su nombre de usuario">
 
             <label for="password" class="text-2xl text-white">Contraseña</label>

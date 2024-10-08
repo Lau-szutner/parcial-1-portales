@@ -22,29 +22,9 @@ class ArticlesController extends Controller
         // Obtener el artículo por su ID
         $article = Article::findOrFail($id);
 
-        // Obtener la ruta completa del archivo markdown
-
-        // Obtener la ruta completa del archivo markdown
-        $filePath = public_path($article->content_path);
-
-        // Imprimir la ruta para depuración
-        // dd($filePath); // Verifica que la ruta sea correcta
-        // Verificar si el archivo existe
-        if (!File::exists($filePath)) {
-            abort(404, "El archivo del artículo no fue encontrado.");
-        }
-
-        // Leer el contenido del archivo markdown
-        $markdownContent = File::get($filePath);
-
-        // Convertir el contenido markdown a HTML usando el método `convert()`
-        $converter = new CommonMarkConverter();
-        $htmlContent = $converter->convert($markdownContent)->getContent(); // Modificado aquí
-
         // Pasar el contenido HTML a la vista
-        return view('articulos.view', [
+        return view('articles.view', [
             'article' => $article,
-            'htmlContent' => $htmlContent, // Pasamos el HTML convertido
         ]);
     }
 }

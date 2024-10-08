@@ -26,16 +26,15 @@ class DashboardController extends Controller
     {
         // Validar los datos
         $request->validate([
-            'title' => 'required|string|max:255',
-            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // La imagen no es obligatoria
-            'category' => 'required|string',
-            'time-to-read' => 'required|integer',
-            'Autor' => 'required|string',
-            'content_path' => 'required|string',
-            'descripcion' => 'required|string',
+            'title' => 'required|string|min:2',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // La imagen no es obligatoria
+            'category' => 'required|string|min:2',
+            'time-to-read' => 'required|string|min:10',
+            'author' => 'required|string|min:2',
+            'body' => 'required|string|min:10',
+            'excerpt' => 'required|string',
         ]);
         $data = $request->except(['_token']);
-        // dd($data);
         // Crear un nuevo artículo
         Article::create($data);
         // $article->title = $request->input('title');
@@ -71,6 +70,6 @@ class DashboardController extends Controller
 
         return redirect()
             ->route('dashboard')
-            ->with('feedback.message', 'El artículo se publicó exitosamente');
+            ->with('feedback.message', 'El artículo se <b>' . $data['title'] . ' </b> publicó exitosamente');
     }
 }

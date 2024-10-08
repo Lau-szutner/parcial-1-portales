@@ -35,7 +35,14 @@
         </ul>
     </nav>
 
-    {{ $slot }}
+
+    @if (session()->has('feedback.message'))
+        <div class="bg-green-500 p-10 rounded-xl m-10 w-fit">{!! session()->get('feedback.message') !!}</div>
+    @endif
+    <main>
+        {{ $slot }}
+
+    </main>
 
 </body>
 

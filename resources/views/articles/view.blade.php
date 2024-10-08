@@ -15,7 +15,7 @@
 
             <div class="flex w-full">
                 <div class="prose mt-5 ">
-                    {!! $htmlContent !!}
+                    {{$article->body}}
                 </div>
                 <img class="h-72 rounded-lg place-self-center " src="../{{ $article->img }}"
                     alt="Imagen del artículo {{ $article->title }}" class="w-full h-auto rounded-lg">

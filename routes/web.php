@@ -27,6 +27,9 @@ Route::get('admin/create', [\App\Http\Controllers\DashboardController::class, 'c
     ->name('create');
 
 Route::post('admin/create', [\App\Http\Controllers\DashboardController::class, 'store'])
+
+
+
     ->name('store');
 
 // Route::get('admin/dashboard/{id}', [\App\Http\Controllers\DashboardController::class, 'create'])

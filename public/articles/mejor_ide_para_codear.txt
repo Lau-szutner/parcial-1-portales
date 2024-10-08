@@ -1,4 +1,4 @@
-<p class="text-xl my-10">La elección del mejor entorno de desarrollo integrado (IDE) puede ser un factor determinante en
+
     la
     productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
     realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
@@ -9,9 +9,8 @@
     Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientras
     que Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
     desarrollo en Java y PHP.
-</p>
 
-<p class="text-xl  my-10">
+
     Al elegir un IDE, es importante considerar las preferencias personales, el tipo de proyecto y las herramientas
     necesarias para el desarrollo. Algunos programadores prefieren herramientas ligeras que no consumen muchos recursos,
     como Visual Studio Code, mientras que otros pueden optar por entornos más robustos como IntelliJ o PyCharm que
@@ -20,9 +19,4 @@
     que
     elijas tenga buen soporte para las herramientas y lenguajes que utilizas. En resumen, la selección del IDE perfecto
     dependerá de tus necesidades específicas y tu estilo de programación, así que considera estas características para
-    encontrar el entorno que mejor se adapte a ti.
-</p>
-
-<!-- Remera: xl
-Pantalo: l
-zapatillas: 43 -->
+    encontrar el entorno que mejor se adapte a ti.   

@@ -4,11 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\ArrayRule;
 use Illuminate\Validation\Rules\In;
 
 class DashboardController extends Controller
 {
+
+
+    private array $validationRules = [
+        'title' => 'required|string|min:2',
+        'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'category' => 'required|string|min:2',
+        'time' => 'required|string|min:10',
+        'author' => 'required|string|min:2',
+        'body' => 'required|string|min:10',
+        'excerpt' => 'required|string',
+    ];
+
+    private array $validationMessages = [
+        'title.required' => 'El titulo es requerido.',
+        'img.required' => 'La imagen es requerida',
+        'category.required' => 'La categoria es requerida',
+        'time.required' => 'El tiempo aproximado es requerido',
+        'author.required' => 'El autor es requerido',
+        'body.required' => 'El body es requerido',
+        'excerpt.required' => 'La descripcion es requerida',
+
+    ];
 
     public function dashboard()
     {
@@ -26,24 +50,10 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         // Validar los datos
-        $request->validate([
-            'title' => 'required|string|min:2',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|string|min:2',
-            'time-to-read' => 'required|string|min:10',
-            'author' => 'required|string|min:2',
-            'body' => 'required|string|min:10',
-            'excerpt' => 'required|string',
-        ], [
-            'title.requiered' => 'El titulo es requerido.',
-            'img.required' => 'La imagen es requerida',
-            'category.required' => 'La categoria es requerida',
-            'time-to-read.required' => 'El tiempo aproximado es requerido',
-            'author.required' => 'El autor es requerido',
-            'body.required' => 'El body es requerido',
-            'excerpt.required' => 'La descripcion es requerida',
-
-        ]);
+        $request->validate(
+            $this->validationRules,
+            $this->validationMessages
+        );
         $data = $request->except(['_token']);
         Article::create($data);
         return redirect()
@@ -77,24 +87,10 @@ class DashboardController extends Controller
     public function update(Request $request, int $id)
     {
 
-        $request->validate([
-            'title' => 'required|string|min:2',
-            'img' => '|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|string|min:2',
-            'time-to-read' => 'required|string|min:10',
-            'author' => 'required|string|min:2',
-            'body' => 'required|string|min:10',
-            'excerpt' => 'required|string',
-        ], [
-            'title.requiered' => 'El titulo es requerido.',
-            'img' => 'La imagen es requerida',
-            'category.required' => 'La categoria es requerida',
-            'time-to-read.required' => 'El tiempo aproximado es requerido',
-            'author.required' => 'El autor es requerido',
-            'body.required' => 'El body es requerido',
-            'excerpt.required' => 'La descripcion es requerida',
-
-        ]);
+        $request->validate(
+            $this->validationRules,
+            $this->validationMessages
+        );
 
         $article = Article::findOrFail($id);
         $article->update($request->except('_token'));

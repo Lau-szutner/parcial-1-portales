@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('video', 255);
             $table->string('autor', 50);
             $table->string('duration', 50);
-            $table->string('time-to-read', 20);
+            $table->string('time', 20);
             $table->timestamps();
         });
     }

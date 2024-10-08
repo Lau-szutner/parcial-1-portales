@@ -35,18 +35,26 @@
             <div class="grid grid-cols-3 gap-4">
                 @foreach ($articles as $article)
                     <div class="grid gap-5 bg-[var(--primary-color)] p-4 rounded-lg gap-5 text-[var(--accent-color)]">
-                        <h2 class="text-2xl">{{ $article->title }}</h2>
-                        <div class="flex flex-col gap-5">
-                            <p>Autor: {{ $article->author }}</p>
+                        <h2 class="text-2xl"><strong>{{ $article->title }}</strong></h2>
+
+                        <div class="flex flex-col justify-between">
+                            <p><strong>Autor: </strong> {{ $article->author }}</p>
+
                             <img src="{{ $article->img }}" alt="Imagen del artículo {{ $article->title }}"
                                 class="w-full h-auto rounded-lg">
-                            <p>Categoria: {{ $article->category }}</p>
+                            <p>{{ $article->excerpt }}</p>
+
+                            <div class="mt-5 w-100">
+                                <p><strong class="text-bold">Categoria: </strong>{{ $article->category }}</p>
+                                <button class="bg-[var(--secondary-color)] h-10 rounded-lg w-full">Leer</button>
+                            </div>
+
                         </div>
 
-                        {{-- <p>{{$article->time-to-read}}</p> --}}
+                        {{-- <p>{{ $article->time - to - read }}</p> --}}
 
                         {{-- <p>Noticia {{ $article->id }}</p> --}}
-                        <button class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg">Leer</button>
+
                     </div>
                 @endforeach
             </div>

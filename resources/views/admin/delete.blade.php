@@ -14,7 +14,7 @@
             <p>Estas seguro de eliminar el articulo: <b>{{ $article->title }}</b></p>
         </div>
 
-        <form action="{{ url('admin/dashboard/' . $article->id . '/eliminar') }}" method="post">
+        <form action="{{ route('article.destroy', ['id' => $article->id]) }}" method="post">
             @csrf
             <button type="submit" class="bg-red-500 p-2 rounded-xl border-md">Si, deseo eliminar</button>
         </form>

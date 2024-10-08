@@ -30,14 +30,13 @@ Route::post('admin/create', [\App\Http\Controllers\DashboardController::class, '
 
 
 Route::get('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardController::class, 'delete'])
-    ->name('articles.view');
-Route::post('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardController::class, 'destroy'])
-    ->name('articles.view');
+    ->name('article.delete');
+
+Route::post('admin/dashboard/{id}/destruir', [\App\Http\Controllers\DashboardController::class, 'destroy'])
+    ->name('article.destroy');
 
 Route::get('admin/dashboard/{id}/editar', [\App\Http\Controllers\DashboardController::class, 'edit'])
-    ->name('articles.view');
-Route::post('admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
-    ->name('articles.view');
+    ->name('article.edit');
 
-// Route::get('admin/dashboard/{id}', [\App\Http\Controllers\DashboardController::class, 'create'])
-//     ->name('admin.dashboard.create');
+Route::post('admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
+    ->name('article.update');

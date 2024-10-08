@@ -7,13 +7,13 @@
 <x-layout>
     <x-slot:title>Editar {{ $article->title }}</x-slot:title>
 
-    <h1 class="text-4xl text-center my-10 text-bold">Editar {{ $article->title }}</h1>
+    <h1 class="text-4xl text-center my-10 text-bold">Editar: {{ $article->title }}</h1>
 
     @if ($errors->any())
         <div class="bg-red-500 p-5 text-center">Tenes errores en tus datos ingresados</div>
     @endif
     {{-- admin/dashboard/{id}/subir --}}
-    <form action="{{ url('admin/dashboard/' . $article->id . '/publicar') }}" method="post" enctype="multipart/form-data"
+    <form action="{{ route('article.update', ['id' => $article->id]) }}" method="post" enctype="multipart/form-data"
         class="grid container mx-auto my-10 w-6/12">
         @csrf
         <div class="mb-4 flex flex-col text-2xl">
@@ -42,15 +42,15 @@
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="time-to-read">Tiempo de lectura</label>
-            <input type="text" name="time-to-read" id="time-to-read" class="border-2"
-                @error('time-to-read')
-                aria-errormessage="error-time-to-read"
+            <label for="time">Tiempo de lectura</label>
+            <input type="text" name="time" id="time" class="border-2"
+                @error('time')
+                aria-errormessage="error-time"
             @enderror
-                value="{{ old('time-to-read') }}">
+                value="{{ old('time') }}">
 
-            @error('time-to-read')
-                <div class="text-red-500 text-xl rounded-md my-2" id="error-time-to-read">{{ $message }}</div>
+            @error('time')
+                <div class="text-red-500 text-xl rounded-md my-2" id="error-time">{{ $message }}</div>
             @enderror
         </div>
 

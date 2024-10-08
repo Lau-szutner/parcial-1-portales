@@ -42,15 +42,15 @@
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="time-to-read">Tiempo de lectura</label>
-            <input type="text" name="time-to-read" id="time-to-read" class="border-2"
-                @error('time-to-read')
-                aria-errormessage="error-time-to-read"
+            <label for="time">Tiempo de lectura</label>
+            <input type="text" name="time" id="time" class="border-2"
+                @error('time')
+                aria-errormessage="error-time"
             @enderror
-                value="{{ old('time-to-read') }}">
+                value="{{ old('time') }}">
 
-            @error('time-to-read')
-                <div class="text-red-500 text-xl rounded-md my-2" id="error-time-to-read">{{ $message }}</div>
+            @error('time')
+                <div class="text-red-500 text-xl rounded-md my-2" id="error-time">{{ $message }}</div>
             @enderror
         </div>
 

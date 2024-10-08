@@ -1,6 +1,4 @@
-
-    la
-    productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
+    La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
     realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
     y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA
     es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código

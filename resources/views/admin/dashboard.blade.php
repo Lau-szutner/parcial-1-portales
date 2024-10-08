@@ -43,9 +43,9 @@
                         </td>
                         <td class="border-2 p-2 border-zinc-400 h-fit ">
                             <div class="flex gap-2">
-                                <a href="{{ url('admin/dashboard/' . $article->id . '/eliminar') }}"
+                                <a href="{{ route('article.delete', ['id' => $article->id]) }}"
                                     class="p-4 bg-red-500 rounded-md">Eliminar</a>
-                                <a href="{{ url('admin/dashboard/' . $article->id . '/editar') }}"
+                                <a href="{{ route('article.edit', ['id' => $article->id]) }}"
                                     class="p-4 bg-zinc-500 rounded-md">Editar</a>
                             </div>
                         </td>

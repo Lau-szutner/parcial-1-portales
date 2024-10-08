@@ -46,7 +46,8 @@
             <input type="text" name="time-to-read" id="time-to-read" class="border-2"
                 @error('time-to-read')
                 aria-errormessage="error-time-to-read"
-            @enderror value="{{ old('time-to-read') }}">
+            @enderror
+                value="{{ old('time-to-read') }}">
 
             @error('time-to-read')
                 <div class="text-red-500 text-xl rounded-md my-2" id="error-time-to-read">{{ $message }}</div>
@@ -58,7 +59,8 @@
             <input type="text" name="author" id="author" class="border-2"
                 @error('author')
                 aria-errormessage="error-author"
-            @enderror value="{{ old('author') }}">
+            @enderror
+                value="{{ old('author') }}">
 
             @error('author')
                 <div class="text-red-500 text-xl rounded-md my-2" id="error-author">{{ $message }}</div>
@@ -70,7 +72,7 @@
             <textarea id="body" name="body" rows="10"
                 @error('author')
                 aria-errormessage="error-author"
-            @enderror>{{ old('body') }}"</textarea>
+            @enderror>{{ old('body') }}</textarea>
 
             @error('author')
                 <div class="text-red-500 text-xl rounded-md my-2" id="error-author">{{ $message }}</div>
@@ -81,7 +83,8 @@
             <input type="text" name="excerpt" id="excerpt" class="border-2"
                 @error('excerpt')
                 aria-errormessage="error-excerpt"
-            @enderror value="{{ old('excerpt') }}">
+            @enderror
+                value="{{ old('excerpt') }}">
             @error('excerpt')
                 <div class="text-red-500 text-xl rounded-md my-2" id="error-excerpt">{{ $message }}</div>
             @enderror

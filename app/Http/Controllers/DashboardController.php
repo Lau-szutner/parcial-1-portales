@@ -27,49 +27,42 @@ class DashboardController extends Controller
         // Validar los datos
         $request->validate([
             'title' => 'required|string|min:2',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // La imagen no es obligatoria
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category' => 'required|string|min:2',
             'time-to-read' => 'required|string|min:10',
             'author' => 'required|string|min:2',
             'body' => 'required|string|min:10',
             'excerpt' => 'required|string',
+        ], [
+            'title.requiered' => 'El titulo es requerido.',
+            'img.required' => 'La imagen es requerida',
+            'category.required' => 'La categoria es requerida',
+            'time-to-read.required' => 'El tiempo aproximado es requerido',
+            'author.required' => 'El autor es requerido',
+            'body.required' => 'El body es requerido',
+            'excerpt.required' => 'La descripcion es requerida',
+
         ]);
         $data = $request->except(['_token']);
-        // Crear un nuevo artículo
         Article::create($data);
-        // $article->title = $request->input('title');
-
-        // Procesar la imagen solo si se ha subido
-        // if ($request->hasFile('img')) {
-        //     // Obtener el archivo de imagen
-        //     $image = $request->file('img');
-
-        //     // Sanitizar el título para usarlo como nombre de archivo
-        //     $imageName = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($article->title)) . '.' . $image->getClientOriginalExtension();
-
-        //     // Mover la imagen a la carpeta 'public/articles/images'
-        //     $image->move(public_path('articles/images'), $imageName);
-
-        //     // Guardar la ruta de la imagen en el artículo
-        //     $article->img = 'articles/images/' . $imageName; // Asegúrate de que la ruta sea correcta
-        // } else {
-        //     $article->img = null; // Si no se sube imagen, establecer en null
-        // }
-
-        // Guardar otros campos
-        // $article->category = $request->input('category');
-        // $article->time_to_read = $request->input('time-to-read');
-        // $article->Autor = $request->input('Autor');
-        // $article->content_path = $request->input('content_path');
-        // $article->descripcion = $request->input('descripcion');
-
-        // // Guardar el artículo en la base de datos
-        // $article->save();
-
-
-
         return redirect()
             ->route('dashboard')
-            ->with('feedback.message', 'El artículo se <b>' . $data['title'] . ' </b> publicó exitosamente');
+            ->with('feedback.message', 'El artículo se <b>' . e($data['title']) . ' </b> publicó exitosamente');
+    }
+
+    public function delete(int $id)
+    {
+        return view('admin.delete', [
+            'article' =>  Article::findOrFail($id)
+        ]);
+    }
+
+    public function destroy(int $id)
+    {
+        $article =  Article::findOrFail($id);
+        $article->delete();
+        return redirect()
+            ->route('dashboard')
+            ->with('feedback.message', 'El artículo se <b>' . e($article['title']) . ' </b> se elimino exitosamente');
     }
 }

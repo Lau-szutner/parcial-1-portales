@@ -12,42 +12,55 @@
 
             <thead class="border-2">
                 <tr>
-                    <th class="border-2">ID</th>
-                    <th class="border-2">Title</th>
-                    <th class="border-2">Image</th>
-                    <th class="border-2">Category</th>
-                    <th class="border-2">Time to Read</th>
-                    <th class="border-2">Author</th>
-                    <th class="border-2">Excerpt</th>
-                    <th class="border-2">Content</th>
-                    <th class="border-2">Acciones</th>
+                    <th class="border-2 border-zinc-400">ID</th>
+                    <th class="border-2 border-zinc-400">Title</th>
+                    <th class="border-2 border-zinc-400">Image</th>
+                    <th class="border-2 border-zinc-400">Category</th>
+                    <th class="border-2 border-zinc-400">Time to Read</th>
+                    <th class="border-2 border-zinc-400">Author</th>
+                    <th class="border-2 border-zinc-400">Excerpt</th>
+                    <th class="border-2 border-zinc-400">Content</th>
+                    <th class="border-2 border-zinc-400">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($articles as $article)
                     <tr class="border-2 p-10">
-                        <td>{{ $article->id }}</td>
-                        <td>{{ $article->title }}</td>
-                        <td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $article->id }}</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $article->title }}</td>
+                        <td class="border-2 p-2 border-zinc-400">
                             @if ($article->img)
                                 <img src="{{ $article->img }}" alt="Image for {{ $article->title }}" width="100">
                             @else
                                 No image
                             @endif
                         </td>
-                        <td>{{ $article->category }}</td>
-                        <td>{{ $article->time_to_read }} min</td>
-                        <td>{{ $article->author }}</td>
-                        <td class="w-fit">{{ $article->excerpt }}</td>
-                        <td><a href="{{ $article->content_path }}">Read more</a></td>
-                        <td>crear</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $article->category }}</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $article->time_to_read }} min</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $article->author }}</td>
+                        <td class="w-fit border-2 p-2 border-zinc-400">{{ $article->excerpt }}</td>
+                        <td class="border-2 p-2 border-zinc-400"><a href="{{ $article->content_path }}">Read more</a>
+                        </td>
+                        <td class="border-2 p-2 border-zinc-400 h-fit ">
+                            <div>
+                                <a href="{{ url('admin/dashboard/' . $article->id . '/eliminar') }}"
+                                    class="p-4 bg-red-500 rounded-md">Eliminar</a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
 
-            <button class="text-center p-4 bg-blue-500"><x-nav-link route="create">Publicar un nuevo
-                    articulo</x-nav-link></button>
+
+
         </table>
+        <button class="text-center p-4 bg-blue-500 my-10 w-fit self-center rounded-xl">
+            <x-nav-link route="create">Publicar un nuevo
+                articulo
+            </x-nav-link>
+        </button>
+
+
     </section>
 
 

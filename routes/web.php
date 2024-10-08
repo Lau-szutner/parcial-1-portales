@@ -22,15 +22,17 @@ Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])
 Route::get('admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'dashboard'])
     ->name('dashboard');
 
-
 Route::get('admin/create', [\App\Http\Controllers\DashboardController::class, 'create'])
     ->name('create');
 
 Route::post('admin/create', [\App\Http\Controllers\DashboardController::class, 'store'])
-
-
-
     ->name('store');
+
+
+Route::get('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardController::class, 'delete'])
+    ->name('articles.view');
+Route::post('admin/dashboard/{id}/eliminar', [\App\Http\Controllers\DashboardController::class, 'destroy'])
+    ->name('articles.view');
 
 // Route::get('admin/dashboard/{id}', [\App\Http\Controllers\DashboardController::class, 'create'])
 //     ->name('admin.dashboard.create');

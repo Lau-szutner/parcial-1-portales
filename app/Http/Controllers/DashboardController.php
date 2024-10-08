@@ -34,17 +34,22 @@ class DashboardController extends Controller
 
     ];
 
-    public function dashboard()
-    {
-        $articles = Article::all();
-        return view('admin.dashboard', [
-            'articles' => $articles,
-        ]);
-    }
+    // public function dashboard()
+    // {
+    //     $articles = Article::all();
+    //     return view('admin.dashboard', [
+    //         'articles' => $articles,
+    //     ]);
+    // }
 
     public function create()
     {
         return view('admin.create');
+    }
+
+    public function login()
+    {
+        return view('admin.login');
     }
 
     public function store(Request $request)
@@ -97,5 +102,14 @@ class DashboardController extends Controller
         return redirect()
             ->route('dashboard')
             ->with('feedback.message', 'El artículo se <b>' . e($article['title']) . ' </b> se edito exitosamente');
+    }
+
+
+    public function doLogin(Request $request)
+    {
+        $articles = Article::all();
+        return view('admin.dashboard', [
+            'articles' => $articles,
+        ]);
     }
 }

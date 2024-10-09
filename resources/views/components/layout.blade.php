@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{ $title }} :: Clouty</title>
+        <title>{{ $title }} :: Clauty</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -13,7 +13,7 @@
     <body class="font-sans bg-[var(--accent-color)] h-screen flex flex-col">
         <nav class="bg-[var(--primary-color)] text-white p-6 flex justify-between">
             <div class="flex items-center">
-                <h1 class="text-4xl">Clouty.com</h1>
+                <h1 class="text-4xl">Clauty.com</h1>
             </div>
             <ul class="flex gap-10 items-center">
                 <li>

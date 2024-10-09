@@ -6,16 +6,14 @@
             <div>
                 <img src="{{ asset('images/home-01.webp') }}" alt="Descripción de la imagen" class="rounded-lg">
             </div>
-            <div class="flex flex-col items-center justify-center">
-                <h2 class="font-bold text-2xl">Lorem, ipsum.</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolore, quis atque nisi ducimus
-                    consequuntur at, neque, iusto eveniet recusandae accusamus. Error sequi vel cul
-                    laudantium iur
+            <div class="flex flex-col items-center justify-center w-9/12 gap-10">
+                <h2 class="font-bold text-4xl">Bienvenidos a Clauty</h2>
+                <p>Tu espacio para aprender y crecer. Aquí encontrarás una variedad de cursos y artículos diseñados para
+                    ayudarte a desarrollar nuevas habilidades y profundizar en tus conocimientos. Ya sea que estés
+                    buscando aprender algo nuevo o mejorar lo que ya sabes, Clauty es el lugar ideal para tu crecimiento
+                    personal y profesional. ¡Explora nuestros contenidos y comienza tu camino hacia el éxito hoy mismo!
                 </p>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos doloremque quae iure magnam
-                    cupiditate rerum accusamus fugit autem itaque dolorem!
-                </p>
             </div>
         </section>
         <section class="mx-auto bg-[var(--primary-color)] flex flex-col items-center py-10">

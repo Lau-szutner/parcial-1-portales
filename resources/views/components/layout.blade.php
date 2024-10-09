@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title }} :: Clouty</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ $title }} :: Clouty</title>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="font-sans bg-[var(--accent-color)]">
-    <nav>
-        <div class="bg-[var(--primary-color)] text-white p-6 flex justify-between">
+    <body class="font-sans bg-[var(--accent-color)] h-screen flex flex-col">
+        <nav class="bg-[var(--primary-color)] text-white p-6 flex justify-between">
             <div class="flex items-center">
                 <h1 class="text-4xl">Clouty.com</h1>
             </div>
@@ -46,19 +43,23 @@
                     <x-nav-link route="login" class="text-center">Login</x-nav-link>
                 </div>
             @endauth
-
-        </div>
-    </nav>
+        </nav>
 
 
-    @if (session()->has('feedback.message'))
-        <div class="bg-green-500 p-5 rounded-xl m-10 w-fit">{!! session()->get('feedback.message') !!}</div>
-    @endif
-    <main>
-        {{ $slot }}
+        @if (session()->has('feedback.message'))
+            <div class="bg-green-500 p-5 rounded-xl m-10 w-fit">{!! session()->get('feedback.message') !!}</div>
+        @endif
+        <main class="flex-grow">
+            {{ $slot }}
+        </main>
+        <footer class="w-full mt-20 bg-[var(--primary-color)] text-white p-6 flex justify-center gap-10">
+            <div>
+                <span class="font-bold">Alumno: </span>Lautaro Fernandez Szutner
+            </div>
+            <div>
+                <span class="font-bold">Comision: </span>DWN3AV
+            </div>
+        </footer>
+    </body>
 
-    </main>
-
-</body>
-
-</html>
+    </html>

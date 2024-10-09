@@ -14,7 +14,6 @@
                 placeholder="Ingrese su contraseña">
 
             <button type="submit" class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">Iniciar</button>
-
         </form>
     </main>
 </x-layout>

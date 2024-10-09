@@ -22,7 +22,7 @@ class ArticleSeeder extends Seeder
                 'title' => '¿Cuál es el mejor IDE para codear?',
                 'img' => 'images/ide-mejor.webp',
                 'category' => 'Desarrollo',
-                'body' => '    La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
+                'body' => 'La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
     realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
     y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA
     es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código
@@ -30,19 +30,7 @@ class ArticleSeeder extends Seeder
     proporciona un entorno optimizado con herramientas de análisis y soporte para frameworks populares como Django y
     Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientras
     que Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
-    desarrollo en Java y PHP.
-
-
-    Al elegir un IDE, es importante considerar las preferencias personales, el tipo de proyecto y las herramientas
-    necesarias para el desarrollo. Algunos programadores prefieren herramientas ligeras que no consumen muchos recursos,
-    como Visual Studio Code, mientras que otros pueden optar por entornos más robustos como IntelliJ o PyCharm que
-    ofrecen
-    funciones avanzadas. Además, la disponibilidad de extensiones y plugins es un aspecto clave; asegúrate de que el IDE
-    que
-    elijas tenga buen soporte para las herramientas y lenguajes que utilizas. En resumen, la selección del IDE perfecto
-    dependerá de tus necesidades específicas y tu estilo de programación, así que considera estas características para
-    encontrar el entorno que mejor se adapte a ti.   
-',
+    desarrollo en Java y PHP.',
                 'time' => '20 minutos',
                 'author' => 'Lautaro Fernandez Szutner',
                 'created_at' => now(),
@@ -54,26 +42,7 @@ class ArticleSeeder extends Seeder
                 'title' => '¿Cómo usar Laravel?',
                 'img' => 'images/usar-laravel.webp',
                 'category' => 'Frameworks',
-                'body' => '    La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
-    realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
-    y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA
-    es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código
-    limpio, además de soportar otros lenguajes como Kotlin y Scala. Para quienes se enfocan en Python, PyCharm
-    proporciona un entorno optimizado con herramientas de análisis y soporte para frameworks populares como Django y
-    Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientras
-    que Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
-    desarrollo en Java y PHP.
-
-
-    Al elegir un IDE, es importante considerar las preferencias personales, el tipo de proyecto y las herramientas
-    necesarias para el desarrollo. Algunos programadores prefieren herramientas ligeras que no consumen muchos recursos,
-    como Visual Studio Code, mientras que otros pueden optar por entornos más robustos como IntelliJ o PyCharm que
-    ofrecen
-    funciones avanzadas. Además, la disponibilidad de extensiones y plugins es un aspecto clave; asegúrate de que el IDE
-    que
-    elijas tenga buen soporte para las herramientas y lenguajes que utilizas. En resumen, la selección del IDE perfecto
-    dependerá de tus necesidades específicas y tu estilo de programación, así que considera estas características para
-    encontrar el entorno que mejor se adapte a ti.   
+                'body' => 'Laravel se destaca por su elegante sintaxis y su arquitectura MVC, lo que facilita la creación de proyectos escalables y mantenibles. Existen numerosos cursos en línea que abarcan desde conceptos básicos hasta técnicas avanzadas, adaptándose a diferentes niveles de experiencia. Algunos cursos enfatizan la creación de APIs RESTful, mientras que otros se centran en la implementación de funciones específicas como autenticación, manejo de bases de datos y optimización de rendimiento. Es esencial considerar tus objetivos de aprendizaje y el estilo de enseñanza que prefieres al elegir un curso. Además, la disponibilidad de recursos adicionales, como documentación, foros de soporte y proyectos prácticos, puede mejorar significativamente tu experiencia de aprendizaje. En resumen, al seleccionar un curso de Laravel, asegúrate de que se alinee con tus necesidades y expectativas para aprovechar al máximo esta potente herramienta en el desarrollo web.
 ',
                 'time' => '40 minutos',
                 'author' => 'Lautaro Fernandez Szutner',
@@ -85,26 +54,7 @@ class ArticleSeeder extends Seeder
                 'title' => 'Introducción a Markdown',
                 'img' => 'images/introduccion-markdown.webp',
                 'category' => 'Guías',
-                'body' => '    La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
-    realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
-    y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA
-    es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código
-    limpio, además de soportar otros lenguajes como Kotlin y Scala. Para quienes se enfocan en Python, PyCharm
-    proporciona un entorno optimizado con herramientas de análisis y soporte para frameworks populares como Django y
-    Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientras
-    que Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
-    desarrollo en Java y PHP.
-
-
-    Al elegir un IDE, es importante considerar las preferencias personales, el tipo de proyecto y las herramientas
-    necesarias para el desarrollo. Algunos programadores prefieren herramientas ligeras que no consumen muchos recursos,
-    como Visual Studio Code, mientras que otros pueden optar por entornos más robustos como IntelliJ o PyCharm que
-    ofrecen
-    funciones avanzadas. Además, la disponibilidad de extensiones y plugins es un aspecto clave; asegúrate de que el IDE
-    que
-    elijas tenga buen soporte para las herramientas y lenguajes que utilizas. En resumen, la selección del IDE perfecto
-    dependerá de tus necesidades específicas y tu estilo de programación, así que considera estas características para
-    encontrar el entorno que mejor se adapte a ti.   
+                'body' => 'La elección de un artículo sobre Markdown puede ser clave para mejorar tus habilidades en la creación de contenido y documentación. Markdown es un lenguaje de marcado ligero que permite formatear texto de manera sencilla y eficiente, siendo ampliamente utilizado en plataformas como GitHub, foros y blogs. Los artículos sobre Markdown suelen abordar desde los conceptos básicos, como la sintaxis para encabezados, listas y enlaces, hasta técnicas avanzadas, como la inclusión de imágenes y tablas. Al seleccionar un artículo, es importante considerar tu nivel de experiencia y el propósito de tu aprendizaje. Algunos artículos se centran en la integración de Markdown con herramientas de desarrollo, mientras que otros pueden explorar su uso en la escritura técnica y la creación de documentación. Además, la disponibilidad de ejemplos prácticos y ejercicios puede enriquecer tu comprensión y aplicación de Markdown. En resumen, al elegir un artículo sobre Markdown, busca aquel que se adapte a tus necesidades y te permita sacar el máximo provecho de este versátil lenguaje de marcado.
 ',
                 'time' => '32 minutos',
                 'author' => 'Lautaro Fernandez Szutner',
@@ -112,7 +62,7 @@ class ArticleSeeder extends Seeder
                 'updated_at' => now(),
                 'excerpt' => 'Markdown es un lenguaje de marcado simple usado para formatear texto de forma fácil y legible. Permite crear documentos que pueden convertirse en HTML, usando una sintaxis sencilla para listas, negritas, títulos y enlaces. Es muy utilizado en documentación y plataformas como GitHub.',
             ],
-            // Agrega más artículos según sea necesario
+
         ]);
     }
 }

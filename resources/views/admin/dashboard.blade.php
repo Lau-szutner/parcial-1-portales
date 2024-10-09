@@ -21,7 +21,6 @@
                         <th class="border-2 border-zinc-400">Time to Read</th>
                         <th class="border-2 border-zinc-400">Author</th>
                         <th class="border-2 border-zinc-400">Excerpt</th>
-                        <th class="border-2 border-zinc-400">Content</th>
                         <th class="border-2 border-zinc-400">Acciones</th>
                     </tr>
                 </thead>
@@ -34,10 +33,9 @@
                                 <img src="{{ asset($article->img) }}" alt="Image for {{ $article->title }}" width="100">
                             </td>
                             <td class="border-2 p-2 border-zinc-400">{{ $article->category }}</td>
-                            <td class="border-2 p-2 border-zinc-400">{{ $article->time_to_read }} min</td>
+                            <td class="border-2 p-2 border-zinc-400">{{ $article->time }} min</td>
                             <td class="border-2 p-2 border-zinc-400">{{ $article->author }}</td>
                             <td class="w-fit border-2 p-2 border-zinc-400">{{ $article->excerpt }}</td>
-                            <td class="border-2 p-2 border-zinc-400"><a href="{{ $article->content_path }}">Read more</a>
                             </td>
                             <td class="border-2 p-2 border-zinc-400 h-fit ">
                                 <div class="flex gap-2">

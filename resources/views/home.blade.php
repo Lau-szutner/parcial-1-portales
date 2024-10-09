@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ */
+?>
 <x-layout class="font-serif">
     <x-slot:title>Home</x-slot:title>
 

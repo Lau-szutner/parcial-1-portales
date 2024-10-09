@@ -21,13 +21,14 @@
         <section class="mx-auto bg-[var(--primary-color)] flex flex-col items-center py-10">
             <h2 class="text-4xl text-[var(--accent-color)]">Los mejores cursos por profesionales</h2>
             <div class="container mx-auto flex gap-5 flex-row justify-center py-10">
-                <img src="{{ asset('/images/cursos/javascript.png') }}" alt="Imagen 1" class="rounded-lg w-4/12">
-                <img src="{{ asset('/images/cursos/laravel.png') }}" alt="Imagen 2" class="rounded-lg w-4/12">
-                <img src="{{ asset('/images/cursos/php.png') }}" alt="Imagen 3" class="rounded-lg w-4/12">
+                <img src="{{ asset('/images/cursos/javascript.png') }}" alt="Curso de javascript"
+                    class="rounded-lg w-4/12">
+                <img src="{{ asset('/images/cursos/laravel.png') }}" alt="Curso de laravel" class="rounded-lg w-4/12">
+                <img src="{{ asset('/images/cursos/php.png') }}" alt="Curso de php" class="rounded-lg w-4/12">
             </div>
 
             <button class="bg-[var(--secondary-color)] py-2 px-6 rounded-xl text-white">
-<x-nav-link route="cursos.index">Cursos</x-nav-link>
+                <x-nav-link route="cursos.index">Cursos</x-nav-link>
             </button>
         </section>
         <section class="container mx-auto flex flex-col items-center">
@@ -47,14 +48,11 @@
 
                             <div class="mt-5 w-100">
                                 <p><strong class="text-bold">Categoria: </strong>{{ $article->category }}</p>
-                                <button class="bg-[var(--secondary-color)] h-10 rounded-lg w-full">Leer</button>
+                                <button class="bg-[var(--secondary-color)] h-10 rounded-lg w-full"> <a
+                                        href="{{ route('articles.view', ['id' => $article->id]) }}">Leer</a></button>
                             </div>
 
                         </div>
-
-                        {{-- <p>{{ $article->time - to - read }}</p> --}}
-
-                        {{-- <p>Noticia {{ $article->id }}</p> --}}
 
                     </div>
                 @endforeach

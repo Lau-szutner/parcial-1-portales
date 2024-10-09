@@ -23,7 +23,7 @@
                     <x-nav-link route="home">Home</x-nav-link>
                 </li>
                 <li>
-                    <x-nav-link route="cursos">Cursos</x-nav-link>
+                    <x-nav-link route="cursos.index">Cursos</x-nav-link>
                 </li>
                 <li>
                     <x-nav-link route="articulos.index">Articulos</x-nav-link>

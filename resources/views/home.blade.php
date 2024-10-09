@@ -21,12 +21,13 @@
         <section class="mx-auto bg-[var(--primary-color)] flex flex-col items-center py-10">
             <h2 class="text-4xl text-[var(--accent-color)]">Los mejores cursos por profesionales</h2>
             <div class="container mx-auto flex gap-5 flex-row justify-center py-10">
-                <img src="https://picsum.photos/400/200" alt="" class="rounded-lg">
-                <img src="https://picsum.photos/400/200" alt="" class="rounded-lg">
-                <img src="https://picsum.photos/400/200" alt="" class="rounded-lg">
+                <img src="{{ asset('/images/cursos/javascript.png') }}" alt="Imagen 1" class="rounded-lg w-4/12">
+                <img src="{{ asset('/images/cursos/laravel.png') }}" alt="Imagen 2" class="rounded-lg w-4/12">
+                <img src="{{ asset('/images/cursos/php.png') }}" alt="Imagen 3" class="rounded-lg w-4/12">
             </div>
+
             <button class="bg-[var(--secondary-color)] py-2 px-6 rounded-xl text-white">
-                Cursos
+<x-nav-link route="cursos.index">Cursos</x-nav-link>
             </button>
         </section>
         <section class="container mx-auto flex flex-col items-center">

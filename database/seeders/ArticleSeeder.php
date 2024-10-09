@@ -22,14 +22,7 @@ class ArticleSeeder extends Seeder
                 'title' => '¿Cuál es el mejor IDE para codear?',
                 'img' => 'images/ide-mejor.webp',
                 'category' => 'Desarrollo',
-                'body' => 'La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se
-    realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes
-    y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA
-    es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código
-    limpio, además de soportar otros lenguajes como Kotlin y Scala. Para quienes se enfocan en Python, PyCharm
-    proporciona un entorno optimizado con herramientas de análisis y soporte para frameworks populares como Django y
-    Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientras
-    que Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
+                'body' => 'La productividad de un programador, y suele depender de las preferencias individuales y el tipo de desarrollo que se realice. Visual Studio Code es uno de los editores más destacados, gracias a su flexibilidad, extensiones abundantes y rendimiento. Es una excelente opción para quienes trabajan con múltiples lenguajes. Por otro lado, IntelliJ IDEA es ideal para desarrolladores de Java, ofreciendo herramientas avanzadas que facilitan la escritura de código limpio, además de soportar otros lenguajes como Kotlin y Scala. Para quienes se enfocan en Python, PyCharm proporciona un entorno optimizado con herramientas de análisis y soporte para frameworks populares como Django y Flask. Otros editores, como Sublime Text y Atom, destacan por su ligereza y capacidad de personalización, mientrasque Eclipse y NetBeans son conocidos por su robustez y conjunto de herramientas, especialmente en el ámbito del
     desarrollo en Java y PHP.',
                 'time' => '20 minutos',
                 'author' => 'Lautaro Fernandez Szutner',

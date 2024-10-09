@@ -13,9 +13,9 @@ class CursosTableSeeder extends Seeder
             [
                 'nombre' => 'Curso de PHP',
                 'descripcion' => 'Aprende los fundamentos de PHP y cómo desarrollar aplicaciones web.',
-                'duracion' => 40, // en horas
+                'duracion' => 40,
                 'nivel' => 'Básico',
-                'imagen' => 'images/cursos/php.png', // Ruta de la imagen
+                'imagen' => 'images/cursos/php.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -37,7 +37,7 @@ class CursosTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            // Agrega más cursos aquí si lo deseas
+
         ]);
     }
 }

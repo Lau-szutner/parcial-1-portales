@@ -3,7 +3,7 @@
     <main class="container mx-auto grid justify-items-center">
         <h1 class="text-5xl my-10">Login</h1>
 
-        <form action="{{ route('admin.doLogin') }}" class="grid bg-[var(--primary-color)] p-10 rounded-lg w-6/12 gap-8">
+        <form action="{{ route('admin.auth') }}" class="grid bg-[var(--primary-color)] p-10 rounded-lg w-6/12 gap-8">
 
             <label for="email" class="text-2xl text-white">Email</label>
             <input type="email" name="email" id="email" class="h-10 w-50 p-5 rounded-lg"

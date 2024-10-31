@@ -128,13 +128,8 @@ class DashboardController extends Controller
     }
 
 
-    public function doLogin(Request $request)
+    public function auth(Request $request)
     {
-        // $articles = Article::all();
-        // return view('admin.dashboard', [
-        //     'articles' => $articles,
-        // ]);
-
 
         $credentials = $request->only(['email', 'password']);
         if (!Auth::attempt($credentials)) {

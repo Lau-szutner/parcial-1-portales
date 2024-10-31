@@ -39,10 +39,10 @@ Route::get('/admin/dashboard/{id}/editar', [\App\Http\Controllers\DashboardContr
 Route::post('/admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
     ->name('article.update');
 
-// Route::get('iniciar-sesion', [\App\Http\Controllers\DashboardControllerController::class, 'doLogin'])
-//     ->name('auth.doLogin');
+// Route::get('iniciar-sesion', [\App\Http\Controllers\DashboardControllerController::class, 'auth'])
+//     ->name('auth.auth');
 
-Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'doLogin'])
-    ->name('admin.doLogin');
+Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'auth'])
+    ->name('admin.auth');
 
 Route::post('admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'doLogout'])->name('admin.doLogout');

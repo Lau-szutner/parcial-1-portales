@@ -11,9 +11,10 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+        // $articles = Article::all();
+        $allArticles = Article::with(['nivel'])->get();
         return view('articles.index', [
-            'articles' => $articles,
+            'articles' => $allArticles,
         ]);
     }
 

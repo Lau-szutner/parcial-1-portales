@@ -16,6 +16,7 @@
                 <div class="grid bg-[var(--primary-color)] p-4 rounded-lg gap-5">
                     <h2 class="text-3xl font-bold">{{ $article->title }}</h2>
                     <p>Autor: {{ $article->author }}</p>
+                    <p>Nivel: {{ $article->nivel->name }}</p>
                     <img class="h-72 rounded-lg place-self-center" src="{{ $article->img }}"
                         alt="Imagen del artículo {{ $article->title }}" class="w-full h-auto rounded-lg">
                     <p class="text-lg">

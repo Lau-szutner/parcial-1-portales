@@ -94,6 +94,9 @@
                 <select name="nivel_fk" id="nivel_fk">
 
                     @foreach ($nivels as $nivel)
+                        <option value="{{ $nivel->nivel_id }}">
+                            {{ $nivel->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Nivel;
 use Illuminate\Support\Facades\Auth; // Importa la clase Auth
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -45,7 +46,9 @@ class DashboardController extends Controller
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.create', [
+            'nivels' => Nivel::all()
+        ]);
     }
 
     public function login()

@@ -12,7 +12,7 @@ class Article extends Model
 
     // protected $table = 'articles';
 
-    protected $fillable = ['title', 'img', 'category', 'time', 'author', 'body', 'excerpt', 'hello'];
+    protected $fillable = ['title', 'img', 'category', 'time', 'author', 'body', 'excerpt',];
 
 
     public function nivel(): BelongsTo

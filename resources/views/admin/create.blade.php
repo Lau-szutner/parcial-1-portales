@@ -89,6 +89,17 @@
                 @enderror
             </div>
 
+            <div class="mb-4 flex flex-col text-2xl">
+                <label for="nivel_fk">Nivel</label>
+                <select name="nivel_fk" id="nivel_fk">
+
+                    @foreach ($nivels as $nivel)
+                    @endforeach
+                </select>
+            </div>
+
+
+
             <button type="submit" class="text-white bg-[var(--primary-color)] p-4 rounded-xl">Publicar</button>
         </form>
     @endauth

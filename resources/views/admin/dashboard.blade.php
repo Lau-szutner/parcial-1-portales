@@ -21,6 +21,7 @@
                         <th class="border-2 border-zinc-400">Time to Read</th>
                         <th class="border-2 border-zinc-400">Author</th>
                         <th class="border-2 border-zinc-400">Excerpt</th>
+                        <th class="border-2 border-zinc-400">Nivel</th>
                         <th class="border-2 border-zinc-400">Acciones</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                             <td class="border-2 p-2 border-zinc-400">{{ $article->author }}</td>
                             <td class="w-fit border-2 p-2 border-zinc-400">{{ $article->excerpt }}</td>
                             </td>
+                            <td class="border-2 p-2 border-zinc-400">{{ $article->nivel->name }}</td>
                             <td class="border-2 p-2 border-zinc-400 h-fit ">
                                 <div class="flex gap-2">
                                     <a href="{{ route('article.delete', ['id' => $article->id]) }}"

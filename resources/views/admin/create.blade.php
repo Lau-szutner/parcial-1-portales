@@ -94,7 +94,7 @@
                 <select name="nivel_fk" id="nivel_fk">
 
                     @foreach ($nivels as $nivel)
-                        <option value="{{ $nivel->nivel_id }}">
+                        <option value="{{ $nivel->nivel_id }}" @if ($nivel->nivel_id === old('nivel_fk')) selected @endif>
                             {{ $nivel->name }}
                         </option>
                     @endforeach

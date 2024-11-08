@@ -23,6 +23,7 @@
                         <th class="border-2 border-zinc-400">Excerpt</th>
                         <th class="border-2 border-zinc-400">Nivel</th>
                         <th class="border-2 border-zinc-400">Acciones</th>
+                        <th class="border-2 border-zinc-400">Topicos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +40,7 @@
                             <td class="w-fit border-2 p-2 border-zinc-400">{{ $article->excerpt }}</td>
                             </td>
                             <td class="border-2 p-2 border-zinc-400">{{ $article->nivel->name }}</td>
-                            <td class="border-2 p-2 border-zinc-400 h-fit ">
+                            <td class="border-2 p-2 border-zinc-400 h-fit">
                                 <div class="flex gap-2">
                                     <a href="{{ route('article.delete', ['id' => $article->id]) }}"
                                         class="p-4 bg-red-500 rounded-md">Eliminar</a>
@@ -47,6 +48,14 @@
                                         class="p-4 bg-zinc-500 rounded-md">Editar</a>
                                 </div>
                             </td>
+                            <td class="border-2 p-2 border-zinc-400 h-fit">
+                                @foreach ($article->topics as $topic)
+                                    <ul>
+                                        <li class="my-3">{{ $topic->name }}</li>
+                                    </ul>
+                                @endforeach
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>

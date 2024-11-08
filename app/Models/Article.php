@@ -19,4 +19,16 @@ class Article extends Model
     {
         return $this->belongsTo(Nivel::class, 'nivel_fk', 'nivel_id');
     }
+
+    public function topics()
+    {
+        return $this->belongsToMany(
+            Topic::class,
+            'articles_have_topics',
+            'article_fk',
+            'topic_fk',
+            'id',
+            'topic_id'
+        );
+    }
 }

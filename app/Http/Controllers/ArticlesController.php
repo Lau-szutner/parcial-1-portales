@@ -4,26 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
-use League\CommonMark\CommonMarkConverter;
-use Illuminate\Support\Facades\File;
 
 class ArticlesController extends Controller
 {
     public function index()
     {
-        // $articles = Article::all();
-        $allArticles = Article::with(['nivel'])->get();
+        // Cargar artículos con la relación 'nivel' y 'topics'
+        $articles = Article::with(['nivel', 'topics'])->get();
+        // Debugging la relación topics para un artículo específico
+        // $article = Article::find(1);  // Reemplaza con un artículo que sabes que debería tener tópicos
+        // dd($article->topics);  // Esto debería mostrar la colección de topics asociados
+
         return view('articles.index', [
-            'articles' => $allArticles,
+            'articles' => $articles,
         ]);
     }
 
     public function view(int $id)
     {
-        // Obtener el artículo por su ID
-        $article = Article::findOrFail($id);
+        // Obtener el artículo por su ID, incluyendo los tópicos
+        $article = Article::with('topics')->findOrFail($id);
 
-        // Pasar el contenido HTML a la vista
+        // Pasar el artículo a la vista
         return view('articles.view', [
             'article' => $article,
         ]);

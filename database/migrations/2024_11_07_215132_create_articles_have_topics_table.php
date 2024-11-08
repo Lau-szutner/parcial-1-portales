@@ -17,7 +17,7 @@ return new class extends Migration
 
             // Define topic_fk como un unsignedSmallInteger, y agrega la restricción de clave foránea
             $table->unsignedSmallInteger('topic_fk');
-            $table->foreign('topic_fk')->references('topic_id')->on('topics')->onDelete('cascade');
+            $table->foreign('topic_fk')->references('topic_id')->on('topics');
 
             // Clave primaria compuesta
             $table->primary(['article_fk', 'topic_fk']);

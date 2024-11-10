@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Nivel;
+use App\Models\Topic;
 use Illuminate\Support\Facades\Auth; // Importa la clase Auth
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -16,6 +17,8 @@ class DashboardController extends Controller
 
 
     private array $validationRules = [
+        'topicos_fk' => 'required|array',
+        'topicos_fk.*' => 'exists:topics,topic_id',
         'title' => 'required|string|min:2',
         'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         'category' => 'required|string|min:2',
@@ -47,7 +50,8 @@ class DashboardController extends Controller
     public function create()
     {
         return view('admin.create', [
-            'nivels' => Nivel::all()
+            'nivels' => Nivel::all(),
+            'topics' => Topic::all()
         ]);
     }
 
@@ -59,37 +63,32 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         // Validar los datos
-        $request->validate(
-            $this->validationRules,
-            $this->validationMessages
-        );
+        $request->validate($this->validationRules, $this->validationMessages);
 
-        // Manejar la carga de la imagen, si existe
+        // Manejar la carga de la imagen (similar a tu código existente)
         if ($request->hasFile('img')) {
-            // Obtener el archivo de la imagen
             $image = $request->file('img');
-
-            // Generar un nombre único para la imagen
             $imageName = time() . '_' . $image->getClientOriginalName();
-
-            // Almacenar la imagen en la carpeta public/images
             $image->move(public_path('images'), $imageName);
-
-            // Actualizar el campo 'img' en los datos a guardar
-            $data = $request->except(['_token']);
-            $data['img'] = 'images/' . $imageName; // Guardamos la ruta accesible
+            $data = $request->except(['_token', 'topicos_fk']);
+            $data['img'] = 'images/' . $imageName;
         } else {
-            // Si no se subió ninguna imagen, solo excluimos el campo 'img' de los datos
-            $data = $request->except(['_token', 'img']);
+            $data = $request->except(['_token', 'img', 'topicos_fk']);
         }
 
         // Crear el artículo
-        Article::create($data);
+        $article = Article::create($data);
+
+        // Asociar los tópicos seleccionados al artículo
+        if ($request->has('topicos_fk')) {
+            $article->topics()->sync($request->input('topicos_fk'));
+        }
 
         return redirect()
             ->route('dashboard')
             ->with('feedback.message', 'El artículo se <b>' . e($data['title']) . ' </b> publicó exitosamente');
     }
+
 
 
     public function delete(int $id)

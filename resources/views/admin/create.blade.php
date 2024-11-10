@@ -101,6 +101,18 @@
                 </select>
             </div>
 
+            <div class="mb-4 flex flex-col text-2xl">
+                <label for="topicos_fk">Tópicos</label>
+                <select name="topicos_fk[]" id="topicos_fk" multiple class="border-2">
+                    @foreach ($topics as $topic)
+                        <option value="{{ $topic->topic_id }}" @if (in_array($topic->topic_id, old('topicos_fk', []))) selected @endif>
+                            {{ $topic->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+
 
 
             <button type="submit" class="text-white bg-[var(--primary-color)] p-4 rounded-xl">Publicar</button>

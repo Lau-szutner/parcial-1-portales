@@ -9,11 +9,9 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        // Cargar artículos con la relación 'nivel' y 'topics'
+    
         $articles = Article::with(['nivel', 'topics'])->get();
-        // Debugging la relación topics para un artículo específico
-        // $article = Article::find(1);  // Reemplaza con un artículo que sabes que debería tener tópicos
-        // dd($article->topics);  // Esto debería mostrar la colección de topics asociados
+
 
         return view('articles.index', [
             'articles' => $articles,

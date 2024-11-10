@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'root',
             'email' => 'root@hotmail.com',
             'password' => Hash::make('root123'),
+            'rol' => 'admin',
             'created_at' => now(),
             'updated_at' => now()
         ]);

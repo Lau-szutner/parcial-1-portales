@@ -14,9 +14,9 @@
                 placeholder="Ingrese su contraseña">
 
             <button type="submit" class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">Iniciar</button>
-            <button type="submit" class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
 
-                {{-- <a href="{{ route('createUser.view') }}">Leer</a> --}}
+
+            {{-- <a href="{{ route('createUser.view') }}">Leer</a> --}}
             </button>
         </form>
     </main>

@@ -19,7 +19,14 @@ class CursosController extends Controller
 
     public function adquirir(Curso $curso)
     {
-        // Ahora tienes acceso al objeto $curso completo
-        echo $curso;
+        $usuario = Auth::user(); // Obtener el usuario autenticado
+
+        // Realizar la acción de adquirir el curso
+        $usuario->cursos()->attach($curso);
+
+        // Redirigir a la vista con un mensaje de éxito
+        return redirect()->route('cursos.index')
+            ->with('success', 'Curso adquirido con éxito.')
+            ->with('usuario', $usuario); // Pasar el usuario a la vista
     }
 }

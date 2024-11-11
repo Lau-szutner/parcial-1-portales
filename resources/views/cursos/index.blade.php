@@ -3,7 +3,6 @@
  * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Curso[] $cursos
  */
 ?>
-
 <x-layout>
     <x-slot:title>Cursos</x-slot:title>
 
@@ -25,8 +24,17 @@
                     <!-- Cambié category a nivel -->
                     <button
                         class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">
-                        <a>Ver más</a> <!-- Cambié a la ruta de cursos -->
+                        <a href="#">Ver más</a> <!-- Cambié a la ruta de cursos -->
                     </button>
+
+                    <!-- Formulario para adquirir un curso -->
+                    <form action="{{ route('cursos.adquirir', $curso) }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">
+                            Adquirir
+                        </button>
+                    </form>
                 </div>
             @endforeach
         </div>

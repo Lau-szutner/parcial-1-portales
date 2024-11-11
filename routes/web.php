@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
+
 Route::get('/cursos', [\App\Http\Controllers\CursosController::class, 'index'])
     ->name('cursos.index');
 
@@ -57,3 +58,20 @@ Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'auth'])
     ->name('admin.auth');
 
 Route::post('admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'doLogout'])->name('admin.doLogout');
+
+
+// Ruta para mostrar el perfil (GET)
+Route::get('/profile', [\App\Http\Controllers\UserController::class, 'profile'])
+    ->name('profile')
+    ->middleware('auth');
+
+// Ruta para actualizar el perfil (POST)
+Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updateProfile'])
+    ->name('profile.update')
+    ->middleware('auth');
+
+Route::post('/cursos/{curso}/adquirir', [\App\Http\Controllers\CursosController::class,  'adquirir'])
+    ->name('cursos.adquirir');
+
+Route::get('/cursos/s', [\App\Http\Controllers\CursosController::class, 'index'])
+    ->name('cursos');

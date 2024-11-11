@@ -31,18 +31,25 @@
                     <form action="{{ route('admin.doLogout') }}" method="post">
                         @csrf
                         <button type="submit"
-                            class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">{{ auth()->user()->email }}(cerrar
-                            session)
+                            class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">{{ auth()->user()->email }} (Cerrar
+                            sesión)
                         </button>
                     </form>
-                    <a href="{{ route('dashboard') }}"
-                        class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
+
+                    @if (auth()->user()->rol === 'admin')
+                        <a href="{{ route('dashboard') }}"
+                            class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
+                    @else
+                        <a href="{{ route('cursos') }}"
+                            class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Perfil</a>
+                    @endif
                 </div>
             @else
                 <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
                     <x-nav-link route="login" class="text-center">Login</x-nav-link>
                 </div>
             @endauth
+
         </nav>
 
 

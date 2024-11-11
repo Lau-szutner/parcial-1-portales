@@ -40,7 +40,7 @@
                         <a href="{{ route('dashboard') }}"
                             class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
                     @else
-                        <a href="{{ route('cursos') }}"
+                        <a href="{{ route('user.cursos') }}"
                             class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Perfil</a>
                     @endif
                 </div>

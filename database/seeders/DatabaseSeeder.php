@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             TopicSeeder::class, // Asegúrate de que los topics existan
             ArticleSeeder::class, // Asegúrate de que los articles existan
             CursosTableSeeder::class,
-            ArticlesHasGenresSeeder::class
+            ArticlesHasGenresSeeder::class,
+            UsersHaveCursosSeeder::class
         ]);
     }
 }

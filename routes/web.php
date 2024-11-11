@@ -73,5 +73,5 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
 Route::post('/cursos/{curso}/adquirir', [\App\Http\Controllers\CursosController::class,  'adquirir'])
     ->name('cursos.adquirir');
 
-Route::get('/cursos/s', [\App\Http\Controllers\CursosController::class, 'index'])
-    ->name('cursos');
+Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
+    ->name('user.cursos');

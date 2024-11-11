@@ -2,31 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Curso; // Asegúrate de importar el modelo Curso
+use App\Models\Curso;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class CursosController extends Controller
 {
-    public function index()
+    public function perfil()
     {
-        $cursos = Curso::all(); // Obtiene todos los cursos de la base de datos
-        return view('cursos.index', [
+        // Obtiene el usuario autenticado
+        $user = Auth::user(); // Obtiene el usuario autenticado
+        $cursos = $user->cursos; // Relación 'cursos' para obtener los cursos del usuario
+
+        // Pasamos los cursos y el nombre del usuario a la vista
+        return view('user.cursos', [
             'cursos' => $cursos,
+            'usuario' => $user->name, // Pasamos el nombre del usuario
         ]);
-    }
-
-    public function adquirir(Curso $curso)
-    {
-        $usuario = Auth::user(); // Obtener el usuario autenticado
-
-        // Realizar la acción de adquirir el curso
-        $usuario->cursos()->attach($curso);
-
-        // Redirigir a la vista con un mensaje de éxito
-        return redirect()->route('cursos.index')
-            ->with('success', 'Curso adquirido con éxito.')
-            ->with('usuario', $usuario); // Pasar el usuario a la vista
     }
 }

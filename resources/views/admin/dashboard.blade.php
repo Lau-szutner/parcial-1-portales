@@ -73,6 +73,39 @@
         </section>
 
     @endauth
+    <h1 class="text-4xl text-center my-10">Usuarios y sus Cursos</h1>
+    <section class="flex flex-col">
+        <table class="container mx-auto border-2">
+            <thead class="border-2">
+                <tr>
+                    <th class="border-2 border-zinc-400">ID Usuario</th>
+                    <th class="border-2 border-zinc-400">Nombre</th>
+                    <th class="border-2 border-zinc-400">Email</th>
+                    <th class="border-2 border-zinc-400">Cursos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr class="border-2 p-10">
+                        <td class="border-2 p-2 border-zinc-400">{{ $user->id }}</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $user->name }}</td>
+                        <td class="border-2 p-2 border-zinc-400">{{ $user->email }}</td>
+                        <td class="border-2 p-2 border-zinc-400">
+                            @if ($user->cursos->isNotEmpty())
+                                <ul class="list-disc pl-5">
+                                    @foreach ($user->cursos as $curso)
+                                        <li>{{ $curso->nombre }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>Sin cursos asignados</p>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </section>
 
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Curso;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Curso;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class CursosController extends Controller
 {
     public function perfil()
     {
-        // Obtiene el usuario autenticado
+
         $user = Auth::user(); // Obtiene el usuario autenticado
         $cursos = $user->cursos; // Relación 'cursos' para obtener los cursos del usuario
 

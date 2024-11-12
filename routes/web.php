@@ -70,8 +70,5 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
     ->name('profile.update')
     ->middleware('auth');
 
-Route::post('/cursos/{curso}/adquirir', [\App\Http\Controllers\CursosController::class,  'adquirir'])
-    ->name('cursos.adquirir');
-
 Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
     ->name('user.cursos');

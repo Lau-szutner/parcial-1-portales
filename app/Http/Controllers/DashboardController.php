@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Nivel;
+use App\Models\User;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth; // Importa la clase Auth
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rules\ArrayRule;
 use Illuminate\Validation\Rules\In;
+
 
 class DashboardController extends Controller
 {
@@ -38,12 +40,15 @@ class DashboardController extends Controller
         'excerpt.required' => 'La descripcion es requerida',
 
     ];
-
     public function dashboard()
     {
         $articles = Article::all();
+        // Obtén todos los usuarios con sus cursos
+        $users = User::with('cursos')->get();
+
         return view('admin.dashboard', [
             'articles' => $articles,
+            'users' => $users, // Pasamos los usuarios y cursos a la vista
         ]);
     }
 

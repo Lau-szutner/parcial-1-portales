@@ -1,8 +1,3 @@
-<?php
-
-/** @var  \Illuminate\Support\ViewErrorBag $errors */
-?>
-
 <x-layout>
     <x-slot:title>Publicar un nuevo articulo</x-slot:title>
     @auth
@@ -10,14 +5,14 @@
         <h1 class="text-4xl text-center my-10">Publicar un nuevo articulo</h1>
 
         @if ($errors->any())
-            <div class="bg-red-500 p-5 text-center">Tenes errores en tus datos ingresados</div>
+            <div class="bg-red-500 p-5 text-center">Tienes errores en los datos ingresados</div>
         @endif
 
         <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data"
             class="grid container mx-auto my-10 w-6/12">
             @csrf
             <div class="mb-4 flex flex-col text-2xl">
-                <label for="title">Titulo</label>
+                <label for="title">Título</label>
                 <input type="text" name="title" id="title" class="border-2"
                     @error('title') aria-errormessage="error-title" @enderror value="{{ old('title') }}">
                 @error('title')
@@ -25,12 +20,11 @@
                 @enderror
             </div>
             <div class="mb-4 flex flex-col text-2xl">
-                <label for="img">imagen</label>
+                <label for="img">Imagen</label>
                 <input type="file" name="img" id="imagen" class="border-2">
-
             </div>
             <div class="mb-4 flex flex-col text-2xl">
-                <label for="category">Categoria</label>
+                <label for="category">Categoría</label>
                 <input type="text" name="category" id="category" class="border-2"
                     @error('category')
         aria-errormessage="error-category"
@@ -78,7 +72,7 @@
                 @enderror
             </div>
             <div class="mb-4 flex flex-col text-2xl">
-                <label for="excerpt">descripcion</label>
+                <label for="excerpt">Descripción</label>
                 <input type="text" name="excerpt" id="excerpt" class="border-2"
                     @error('excerpt')
         aria-errormessage="error-excerpt"
@@ -111,9 +105,6 @@
                     @endforeach
                 </select>
             </div>
-
-
-
 
             <button type="submit" class="text-white bg-[var(--primary-color)] p-4 rounded-xl">Publicar</button>
         </form>

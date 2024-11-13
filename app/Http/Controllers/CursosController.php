@@ -22,10 +22,11 @@ class CursosController extends Controller
     }
 
 
-    public function index() {
-            
-        return view('user.cursos', [
-            'cursos' => $cursos;
+    public function index()
+    {
+        $cursos = Curso::all(); // Obtiene todos los cursos de la base de datos
+        return view('cursos.index', [
+            'cursos' => $cursos,
         ]);
     }
 }

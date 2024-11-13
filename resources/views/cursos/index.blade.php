@@ -27,14 +27,14 @@
                         <a href="#">Ver más</a> <!-- Cambié a la ruta de cursos -->
                     </button>
 
-                    <!-- Formulario para adquirir un curso -->
+                    {{-- <!-- Formulario para adquirir un curso -->
                     <form action="{{ route('cursos.adquirir', $curso) }}" method="POST">
                         @csrf
                         <button type="submit"
                             class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">
                             Adquirir
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
             @endforeach
         </div>

@@ -137,18 +137,22 @@ class DashboardController extends Controller
 
     public function auth(Request $request)
     {
-
         $credentials = $request->only(['email', 'password']);
+
         if (!Auth::attempt($credentials)) {
             return redirect()
                 ->route('login')
                 ->with('feedback.message', 'Las credenciales son incorrectas')
+                ->with('feedback.type', 'error') // Establecer el tipo de mensaje
                 ->withInput();
         }
+
         return redirect()
             ->route('dashboard')
-            ->with('feedback.message', 'Sesion iniciada');
+            ->with('feedback.message', 'Sesión iniciada')
+            ->with('feedback.type', 'success'); // Establecer el tipo de mensaje
     }
+
 
 
     public function doLogout(Request $request)

@@ -45,7 +45,7 @@
                         <div class="flex flex-col justify-between">
                             <p><strong>Autor: </strong> {{ $article->author }}</p>
 
-                            <img src="{{ $article->img }}" alt="Imagen del artículo {{ $article->title }}"
+                            <img src="{{ $article->img }}" alt=" {{ $article->title }}"
                                 class="w-full h-auto rounded-lg">
                             <p>{{ $article->excerpt }}</p>
 

@@ -15,8 +15,8 @@
                 <div class="grid bg-[var(--primary-color)] p-4 rounded-lg gap-5">
                     <h2 class="text-3xl font-bold">{{ $curso->nombre }}</h2> <!-- Cambié a nombre -->
                     <p>Duración: {{ $curso->duracion }} horas</p> <!-- Agregué duración -->
-                    <img class="h-72 rounded-lg place-self-center" src="{{ $curso->imagen }}"
-                        alt="Imagen del curso {{ $curso->nombre }}" class="w-full h-auto rounded-lg">
+                    <img class="h-72 rounded-lg place-self-center" src="{{ $curso->imagen }}" alt="{{ $curso->nombre }}"
+                        class="w-full h-auto rounded-lg">
                     <p class="text-lg">
                         {{ $curso->descripcion }} <!-- Cambié excerpt a descripción -->
                     </p>

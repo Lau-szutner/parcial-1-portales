@@ -16,8 +16,8 @@
                 <div class="prose mt-5 ">
                     {{ $article->body }}
                 </div>
-                <img class="h-72 rounded-lg place-self-center " src="../{{ $article->img }}"
-                    alt="Imagen del artículo {{ $article->title }}" class="w-full h-auto rounded-lg">
+                <img class="h-72 rounded-lg place-self-center " src="../{{ $article->img }}" alt="{{ $article->title }}"
+                    class="w-full h-auto rounded-lg">
             </div>
             <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Categoría: {{ $article->category }}</p>
         </article>

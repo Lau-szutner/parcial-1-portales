@@ -8,7 +8,7 @@
     <x-slot:title>Cursos</x-slot:title>
 
     <main class="container mx-auto flex flex-col items-center">
-        <h1 class="text-5xl my-10">Cursos</h1>
+        <h1 class="text-5xl my-10 ">Cursos</h1>
 
         <div class="grid grid-cols-2 gap-4 w-full text-[var(--accent-color)]">
             @foreach ($cursos as $curso)

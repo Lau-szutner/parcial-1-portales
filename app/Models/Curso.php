@@ -21,6 +21,7 @@ class Curso extends Model
         'duracion',
         'nivel',
         'imagen',
+        'precio',
     ];
 
     /**

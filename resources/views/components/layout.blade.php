@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title }} :: Clauty</title>
+    <title>Clauty :: {{ $title }} </title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -27,38 +27,38 @@
             </li>
         </ul>
         @auth
-            <div class="flex flex-col gap-2">
-                <form action="{{ route('admin.doLogout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">
-                        {{ auth()->user()->email }} (Cerrar sesión)
-                    </button>
-                </form>
+        <div class="flex flex-col gap-2">
+            <form action="{{ route('admin.doLogout') }}" method="post">
+                @csrf
+                <button type="submit" class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">
+                    {{ auth()->user()->email }} (Cerrar sesión)
+                </button>
+            </form>
 
-                @if (auth()->user()->rol === 'admin')
-                    <a href="{{ route('dashboard') }}"
-                        class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
-                @else
-                    <a href="{{ route('user.cursos') }}"
-                        class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Perfil</a>
-                @endif
-            </div>
+            @if (auth()->user()->rol === 'admin')
+            <a href="{{ route('dashboard') }}"
+                class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
+            @else
+            <a href="{{ route('user.cursos') }}"
+                class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Perfil</a>
+            @endif
+        </div>
         @else
-            <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
-                <x-nav-link route="login" class="text-center">Login</x-nav-link>
-            </div>
+        <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
+            <x-nav-link route="login" class="text-center">Login</x-nav-link>
+        </div>
         @endauth
     </nav>
 
     @if (session()->has('feedback.message'))
-        <div
-            class="p-5 m-10 w-fit rounded-xl 
+    <div
+        class="p-5 m-10 w-fit rounded-xl 
             @if (session()->get('feedback.type') == 'error') bg-red-500 text-white 
             @elseif(session()->get('feedback.type') == 'success') 
                 bg-green-500 text-white @endif
         ">
-            {!! session()->get('feedback.message') !!}
-        </div>
+        {!! session()->get('feedback.message') !!}
+    </div>
     @endif
 
     <main class="flex-grow">

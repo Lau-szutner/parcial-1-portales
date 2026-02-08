@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
  */
 ?>
+
 <x-layout class="font-serif">
     <x-slot:title>Home</x-slot:title>
 
@@ -39,25 +41,25 @@
 
             <div class="grid grid-cols-3 gap-4">
                 @foreach ($articles as $article)
-                    <div class="grid gap-5 bg-[var(--primary-color)] p-4 rounded-lg gap-5 text-[var(--accent-color)]">
-                        <h2 class="text-2xl"><strong>{{ $article->title }}</strong></h2>
+                <div class="grid gap-5 bg-[var(--primary-color)] p-4 rounded-lg gap-5 text-[var(--accent-color)]">
+                    <h2 class="text-2xl"><strong>{{ $article->title }}</strong></h2>
 
-                        <div class="flex flex-col justify-between">
-                            <p><strong>Autor: </strong> {{ $article->author }}</p>
+                    <div class="flex flex-col justify-between">
+                        <p><strong>Autor: </strong> {{ $article->author }}</p>
 
-                            <img src="{{ $article->img }}" alt=" {{ $article->title }}"
-                                class="w-full h-auto rounded-lg">
-                            <p>{{ $article->excerpt }}</p>
+                        <img src="{{ $article->img }}" alt=" {{ $article->title }}"
+                            class="w-full h-auto rounded-lg">
+                        <p>{{ $article->excerpt }}</p>
 
-                            <div class="mt-5 w-100">
-                                <p><strong class="text-bold">Categoria: </strong>{{ $article->category }}</p>
-                                <button class="bg-[var(--secondary-color)] h-10 rounded-lg w-full"> <a
-                                        href="{{ route('articles.view', ['id' => $article->id]) }}">Leer</a></button>
-                            </div>
-
+                        <div class="mt-5 w-100">
+                            <p><strong class="text-bold">Categoria: </strong>{{ $article->category }}</p>
+                            <button class="bg-[var(--secondary-color)] h-10 rounded-lg w-full"> <a
+                                    href="{{ route('articles.view', ['id' => $article->id]) }}">Leer</a></button>
                         </div>
 
                     </div>
+
+                </div>
                 @endforeach
             </div>
 

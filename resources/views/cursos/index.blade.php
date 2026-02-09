@@ -7,7 +7,7 @@
 <x-layout>
     <x-slot:title>Cursos</x-slot:title>
 
-    <main class="container mx-auto flex flex-col items-center">
+    <div class="container mx-auto flex flex-col items-center">
         <h1 class="text-5xl my-10 ">Cursos</h1>
 
         <div class="grid grid-cols-2 gap-4 w-full text-[var(--accent-color)]">
@@ -21,12 +21,22 @@
                 <p class="text-lg">
                     {{ $curso->descripcion }} <!-- Cambié excerpt a descripción -->
                 </p>
+                <p class="text-lg">
+                    Precio: {{ $curso->precio }}
+                </p>
                 <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Nivel: {{ $curso->nivel }}</p>
                 <!-- Cambié category a nivel -->
-                <button
-                    class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">
-                    <a href="#">Ver más</a> <!-- Cambié a la ruta de cursos -->
-                </button>
+                <a
+                    href="#"
+                    class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg
+            inline-flex items-center justify-center
+            transition-all duration-300 ease-in-out
+            hover:bg-[var(--accent-color)]
+            hover:text-[var(--primary-color)]
+            hover:scale-105">
+                    Ver más
+                </a>
+
 
                 {{-- <!-- Formulario para adquirir un curso -->
                     <form action="{{ route('cursos.adquirir', $curso) }}" method="POST">
@@ -39,5 +49,5 @@
             </div>
             @endforeach
         </div>
-    </main>
+    </div>
 </x-layout>

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
-
 Route::get('/cursos', [\App\Http\Controllers\CursosController::class, 'index'])
     ->name('cursos.index');
 
@@ -21,7 +20,6 @@ Route::get('/articulos/{id}', [\App\Http\Controllers\ArticlesController::class, 
 
 Route::get('/login', [\App\Http\Controllers\DashboardController::class, 'login'])
     ->name('login');
-
 
 Route::get('/admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'dashboard'])
     ->name('dashboard')
@@ -47,7 +45,7 @@ Route::get('/admin/dashboard/{id}/editar', [\App\Http\Controllers\DashboardContr
     ->name('article.edit')
     ->middleware('auth');
 
-Route::post('/admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
+Route::put('/admin/dashboard/{id}/publicar', [\App\Http\Controllers\DashboardController::class, 'update'])
     ->name('article.update')
     ->middleware('auth');
 

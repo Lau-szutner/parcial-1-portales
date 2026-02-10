@@ -8,7 +8,7 @@
     <x-slot:title>Cursos</x-slot:title>
 
     <div class="container mx-auto flex flex-col items-center">
-        <h1 class="text-5xl my-10 ">Cursos</h1>
+        <h2 class="text-5xl my-10 ">Cursos</h2>
 
         <div class="grid grid-cols-2 gap-4 w-full text-[var(--accent-color)]">
             @foreach ($cursos as $curso)
@@ -21,9 +21,7 @@
                 <p class="text-lg">
                     {{ $curso->descripcion }} <!-- Cambié excerpt a descripción -->
                 </p>
-                <p class="text-lg">
-                    Precio: {{ $curso->precio }}
-                </p>
+
                 <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Nivel: {{ $curso->nivel }}</p>
                 <!-- Cambié category a nivel -->
                 <a

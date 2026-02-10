@@ -42,7 +42,7 @@
 
     </section>
     <section class="container mx-auto flex flex-col items-center">
-        <h2 class="text-5xl my-10">Los mejores articulos de la web</h2>
+        <h2 class="text-5xl my-10">Los mejores artículos de la web</h2>
 
         <div class="grid grid-cols-3 gap-4">
             @foreach ($articles as $article)

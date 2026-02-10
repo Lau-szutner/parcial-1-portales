@@ -5,8 +5,6 @@
  */
 ?>
 
-
-
 <x-layout>
     <x-slot:title>Artículos</x-slot:title>
 
@@ -34,8 +32,6 @@
                     <li class="bg-[var(--secondary-color)] w-fit p-2 mt-3 rounded-lg">{{ $topic->name }}</li>
                     @endforeach
                 </ul>
-                <!-- Acceder a los topics del artículo individual -->
-
 
                 <button
                     class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg hover:bg-[var(--accent-color)] ease-in-out duration-300 hover:text-[var(--primary-color)]">

@@ -10,7 +10,7 @@
     <x-slot:title>Artículos - {{ $article->id }}</x-slot:title>
     <main class="container mx-auto flex flex-col items-center">
         <article class="border-2 border-[var(--primary-color)]  my-10 p-10 rounded-xl">
-            <h1 class="text-5xl my-10">{{ $article->title }}</h1>
+            <h2 class="text-5xl my-10">{{ $article->title }}</h2>
             <p class="text-2xl ">Autor: {{ $article->author }}</p>
 
             <div class="flex w-full">

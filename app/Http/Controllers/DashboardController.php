@@ -22,10 +22,9 @@ class DashboardController extends Controller
         'topicos_fk' => 'required|array',
         'topicos_fk.*' => 'exists:topics,topic_id',
         'title' => 'required|string|min:2',
-        'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048',
         'category' => 'required|string|min:2',
         'time' => 'required|string|min:10',
-        'author' => 'required|string|min:2',
         'body' => 'required|string|min:10',
         'excerpt' => 'required|string',
     ];
@@ -35,8 +34,7 @@ class DashboardController extends Controller
         'img.required' => 'La imagen es requerida',
         'category.required' => 'La categoria es requerida',
         'time.required' => 'El tiempo aproximado es requerido',
-        'author.required' => 'El autor es requerido',
-        'body.required' => 'El body es requerido',
+        'body.required' => 'El contenido es requerido',
         'excerpt.required' => 'La descripcion es requerida',
 
     ];
@@ -67,33 +65,35 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
-        // Validar los datos
+
         $request->validate($this->validationRules, $this->validationMessages);
 
-        // Manejar la carga de la imagen (similar a tu código existente)
+        // 2. Preparar los datos (Quitamos el token y los tópicos de entrada)
+        $data = $request->except(['_token', 'topicos_fk']);
+
+        // 3. LOGICA DEL AUTOR: Extraer del usuario autenticado e inyectar en $data
+        $data['author'] = Auth::user()->name;
+
+        // 4. Manejo de la imagen
         if ($request->hasFile('img')) {
             $image = $request->file('img');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('images'), $imageName);
-            $data = $request->except(['_token', 'topicos_fk']);
             $data['img'] = 'images/' . $imageName;
-        } else {
-            $data = $request->except(['_token', 'img', 'topicos_fk']);
         }
 
-        // Crear el artículo
+        // 5. Crear el artículo con los datos que ya incluyen el 'author'
         $article = Article::create($data);
 
-        // Asociar los tópicos seleccionados al artículo
+        // 6. Asociar tópicos
         if ($request->has('topicos_fk')) {
             $article->topics()->sync($request->input('topicos_fk'));
         }
 
         return redirect()
             ->route('dashboard')
-            ->with('feedback.message', 'El artículo se <b>' . e($data['title']) . ' </b> publicó exitosamente');
+            ->with('feedback.message', 'El artículo <b>' . e($article->title) . '</b> se publicó exitosamente');
     }
-
 
 
     public function delete(int $id)
@@ -114,24 +114,57 @@ class DashboardController extends Controller
 
     public function edit(int $id)
     {
+
+        $article = Article::findOrFail($id);
+
+        $nivels = Nivel::all();
+
+        $topics = Topic::all();
+
+        // 4. Le entregamos las 3 cosas a la vista
         return view('admin.edit', [
-            'article' =>  Article::findOrFail($id)
+            'article' => $article,
+            'nivels'  => $nivels,
+            'topics'  => $topics
         ]);
     }
 
     public function update(Request $request, int $id)
     {
+        // 1. Tomamos las reglas base y cambiamos 'required' por 'nullable'
+        $rules = $this->validationRules;
+        $rules['img'] = 'nullable|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048';
 
-        $request->validate(
-            $this->validationRules,
-            $this->validationMessages
-        );
+        // 2. Validamos con las reglas modificadas
+        $request->validate($rules, $this->validationMessages);
 
         $article = Article::findOrFail($id);
-        $article->update($request->except('_token'));
+
+        // 3. Preparamos los datos (filtramos lo que no va a la tabla articles)
+        $data = $request->except(['_token', '_method', 'topicos_fk', 'img']);
+
+        // 4. Aseguramos el autor desde el usuario logueado
+        $data['author'] = Auth::user()->name;
+
+        // 5. Si el usuario subió una imagen (WebP, AVIF, etc.), la procesamos
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+
+            // Guardamos la nueva ruta en el array de datos
+            $data['img'] = 'images/' . $imageName;
+        }
+
+        // 6. Actualizamos los campos de texto e imagen (si se cambió)
+        $article->update($data);
+
+        // 7. Sincronizamos los tópicos en la tabla intermedia
+        $article->topics()->sync($request->input('topicos_fk', []));
+
         return redirect()
             ->route('dashboard')
-            ->with('feedback.message', 'El artículo se <b>' . e($article['title']) . ' </b> se edito exitosamente');
+            ->with('feedback.message', 'El artículo <b>' . e($article->title) . '</b> se editó exitosamente');
     }
 
 

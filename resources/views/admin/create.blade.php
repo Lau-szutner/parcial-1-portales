@@ -2,7 +2,7 @@
     <x-slot:title>Publicar un nuevo articulo</x-slot:title>
     @auth
 
-    <h1 class="text-4xl text-center my-10">Publicar un nuevo articulo</h1>
+    <h2 class="text-4xl text-center my-10">Publicar un nuevo articulo</h2>
 
     @if ($errors->any())
     <div class="bg-red-500 p-5 text-center">Tienes errores en los datos ingresados</div>
@@ -21,7 +21,15 @@
         </div>
         <div class="mb-4 flex flex-col text-2xl">
             <label for="img">Imagen</label>
-            <input type="file" name="img" id="imagen" class="border-2">
+            <input type="file" name="img" id="imagen"
+                class="border-2">
+
+            {{-- Aquí mostramos el mensaje de error --}}
+            @error('img')
+            <div class="text-red-500 text-xl rounded-md my-2" id="error-img">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-4 flex flex-col text-2xl">
             <label for="category">Categoría</label>
@@ -49,25 +57,27 @@
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="author">Autor</label>
-            <input type="text" name="author" id="author" class="border-2"
-                @error('author')
-                aria-errormessage="error-author"
-                @enderror value="{{ old('author') }}">
+            <label class="text-gray-700">Autor</label>
 
-            @error('author')
-            <div class="text-red-500 text-xl rounded-md my-2" id="error-author">{{ $message }}</div>
-            @enderror
+            <div class="border-2 p-2 bg-gray-100 text-gray-600 cursor-not-allowed">
+                {{ Auth::user()->name }}
+            </div>
+
+            <input type="hidden" name="author" value="{{ Auth::user()->name }}">
+            <div class="text-lg text-gray-500">
+                {{ Auth::user()->email }}
+            </div>
         </div>
+
 
         <div class="mb-4 flex flex-col text-2xl">
             <label for="body">Contenido</label>
             <textarea id="body" name="body" rows="10"
-                @error('author')
+                @error('body')
                 aria-errormessage="error-author"
                 @enderror>{{ old('body') }}</textarea>
 
-            @error('author')
+            @error('body')
             <div class="text-red-500 text-xl rounded-md my-2" id="error-author">{{ $message }}</div>
             @enderror
         </div>
@@ -96,7 +106,7 @@
         </div>
 
         <div class="mb-4 flex flex-col text-2xl">
-            <label for="topicos_fk">Tópicos</label>
+            <label for="topicos_fk">Tópicos (Mantén presionado Ctrl para seleccionar varios)</label>
             <select name="topicos_fk[]" id="topicos_fk" multiple class="border-2">
                 @foreach ($topics as $topic)
                 <option value="{{ $topic->topic_id }}" @if (in_array($topic->topic_id, old('topicos_fk', []))) selected @endif>

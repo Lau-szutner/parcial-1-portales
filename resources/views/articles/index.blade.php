@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
  */

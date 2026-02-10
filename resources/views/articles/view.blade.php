@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\Models\Article $article
  * @var string $htmlContent  // Asegúrate de recibir el contenido HTML en la vista
@@ -16,8 +17,7 @@
                 <div class="prose mt-5 ">
                     {{ $article->body }}
                 </div>
-                <img class="h-72 rounded-lg place-self-center " src="../{{ $article->img }}" alt="{{ $article->title }}"
-                    class="w-full h-auto rounded-lg">
+                <img class="h-72 rounded-lg place-self-center " src="../{{ $article->img }}" alt="{{ $article->title }}">
             </div>
             <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Categoría: {{ $article->category }}</p>
         </article>

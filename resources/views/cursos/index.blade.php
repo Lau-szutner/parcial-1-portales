@@ -8,32 +8,29 @@
     <x-slot:title>Cursos</x-slot:title>
 
     <div class="container mx-auto flex flex-col items-center">
-        <h1 class="text-5xl my-10 ">Cursos</h1>
+        <h2 class="text-5xl my-10 ">Cursos</h2>
 
-        <div class="grid grid-cols-2 gap-4 w-full text-[var(--accent-color)]">
+        <div class="grid gird-cols-1 lg:grid-cols-2 gap-4 w-full text-[var(--accent-color)] px-10 lg:px-0">
             @foreach ($cursos as $curso)
-            <!-- Cambié $articles a $cursos -->
             <div class="grid bg-[var(--primary-color)] p-4 rounded-lg gap-5">
-                <h2 class="text-3xl font-bold">{{ $curso->nombre }}</h2> <!-- Cambié a nombre -->
-                <p>Duración: {{ $curso->duracion }} horas</p> <!-- Agregué duración -->
-                <img class="h-72 rounded-lg place-self-center" src="{{ $curso->imagen }}" alt="{{ $curso->nombre }}"
-                    class="w-full h-auto rounded-lg">
+                <h3 class="text-3xl font-bold">{{ $curso->nombre }}</h3>
+                <p>Duración: {{ $curso->duracion }} horas</p>
+                <img class="w-full aspect-video object-cover rounded-lg" src="{{ $curso->imagen }}" alt="{{ $curso->nombre }}">
                 <p class="text-lg">
-                    {{ $curso->descripcion }} <!-- Cambié excerpt a descripción -->
+                    {{ $curso->descripcion }}
                 </p>
                 <p class="text-lg">
                     Precio: {{ $curso->precio }}
                 </p>
                 <p class="bg-[var(--secondary-color)] w-fit p-2 rounded-lg">Nivel: {{ $curso->nivel }}</p>
-                <!-- Cambié category a nivel -->
                 <a
                     href="#"
                     class="bg-[var(--secondary-color)] py-3 px-5 rounded-lg
-            inline-flex items-center justify-center
-            transition-all duration-300 ease-in-out
-            hover:bg-[var(--accent-color)]
-            hover:text-[var(--primary-color)]
-            hover:scale-105">
+                        inline-flex items-center justify-center
+                        transition-all duration-300 ease-in-out
+                        hover:bg-[var(--accent-color)]
+                        hover:text-[var(--primary-color)]
+                        ">
                     Ver más
                 </a>
 

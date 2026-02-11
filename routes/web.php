@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\CheckRole;
 use App\Models\User;
 use GuzzleHttp\Middleware;
@@ -70,3 +71,7 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
 
 Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
     ->name('user.cursos');
+
+// Register
+Route::get('/register', [RegisterController::class, 'index'])
+    ->name('register');

@@ -1,7 +1,7 @@
 <?php
 //  @var string $route
 ?>
-<a class="text-xl {{ request()->routeIs($route) ? 'text-[var(--ternary-color)]  font-bold' : 'text-white' }}"
+<a class="text-xl {{ request()->routeIs($route) ? 'font-bold' : '' }}"
     href="{{ route($route) }}">
     {{ $slot }}
 </a>

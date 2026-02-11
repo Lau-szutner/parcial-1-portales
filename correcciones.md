@@ -2,7 +2,7 @@
 
 ## Terminadas
 
-- [cursos] No indican el precio.
+- [cursos] No indican el precio. -- REVISAR, PONER SUBSCRIPCION
 - Hay errores de validación sin traducir.
     - todo lo no autenticado esta validado
 - [responsive] No es responsive.
@@ -19,32 +19,22 @@
   videntes.
 - Hay imágenes que no tienen un alt
   descriptivo, como la imagen de la home.
-
-## Sin hacer
-
-- [usuarios-admin] Falta cuánto se pagó por cada
-  curso.
 - [noticias] El botón de "Publicar" debería estar al
   comienzo, no al final.
-- [noticias] Algunos textos están en español y otros
-  en inglés.
-- [noticias-form] Hay <label>s que no tienen la
-  mayúscula en la primera letra.
 - [noticias-form] La imagen está marcada como
   campo obligatorio en el código, pero no se
   muestra un mensaje de error si no se pone. Solo
-  tira el error general de que algo salió mal.
 - [noticias-form] La imagen no acepta formatos
   modernos de imagen, como webp o avif.
-- [noticias-form] No se muestra el mensaje de
-  error para el campo "body".
-- [noticias-editar] Hay datos que no se pueden
-  editar (como "Tópicos"), y algunos campos tienen
-  diferentes controles de form (textarea vs input, por
-  ejemplo).
-- [noticias-editar] Los campos de "Tiempo de
-  lectura" y "Autor" son cargados con el mismo
-  valor de "Categoria".
+    - [noticias-form] No se muestra el mensaje de
+      error para el campo "body".
+    - [noticias-editar] Hay datos que no se pueden
+      editar (como "Tópicos"), y algunos campos tienen
+      diferentes controles de form (textarea vs input, por
+      ejemplo).
+    - [noticias-editar] Los campos de "Tiempo de
+      lectura" y "Autor" son cargados con el mismo
+      valor de "Categoria".
 - [noticias-editar] Obliga a poner una nueva
   imagen. Debería permitir editar dejando la imagen
   actual.
@@ -55,9 +45,17 @@
   de edición.
 - [noticias] El autor de la entrada debería ser el
   usuario autenticado.
+
+## Sin hacer
+
+- [usuarios-admin] Falta cuánto se pagó por cada
+  curso.
+- [noticias] Algunos textos están en español y otros
+  en inglés.
+- [noticias-form] Hay <label>s que no tienen la
+  mayúscula en la primera letra.
 - Falta el regsitro de usuarios.
 - Upload de imágenes.
-- Hay errores de validación de HTML.
 - Hay campos de formularios que no tienen un
   label (o atributo aria-\* equivalente)
   debidamente asociado. El placeholder no es un

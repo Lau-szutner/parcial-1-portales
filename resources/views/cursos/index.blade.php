@@ -9,7 +9,7 @@
     <x-slot:title>Cursos Disponibles</x-slot:title>
 
     <div class="container mx-auto px-4 flex flex-col items-center">
-        <h2 class="text-5xl my-10 font-bold text-gray-800">Nuestros Cursos</h2>
+        <h2 class="text-5xl my-10 text-gray-800">Nuestros Cursos</h2>
 
         {{-- Lógica de optimización: obtenemos los IDs una sola vez --}}
         @php
@@ -58,7 +58,7 @@
                     @guest
                     {{-- Caso: Visitante no logueado --}}
                     <a href="{{ route('login') }}?reason=adquirir"
-                        class="w-full bg-[var(--secondary-color)] py-3 px-5 rounded-lg inline-flex items-center justify-center font-bold transition-all duration-300 hover:bg-[var(--accent-color)] hover:text-[var(--primary-color)] hover:scale-[1.02]">
+                        class="w-full bg-[var(--secondary-color)] py-3 px-5 rounded-lg inline-flex items-center justify-center font-bold transition-all duration-300 hover:bg-[var(--accent-color)] hover:text-[var(--primary-color)] hover:scale-[1.02] text-white">
                         Iniciar sesión para adquirir
                     </a>
                     @endguest

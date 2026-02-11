@@ -6,58 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clauty :: {{ $title }} </title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 
-<body class="font-sans bg-[var(--accent-color)] h-screen flex flex-col">
-    <nav class="bg-[var(--primary-color)] text-white p-6 flex justify-between">
+<body class="font-sans bg-slate-50 min-h-screen flex flex-col text-slate-900">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-5 flex justify-between items-center transition-all duration-300">
         <div class="flex items-center">
-            <h1 class="text-4xl">Clauty.com</h1>
+            <h1 class="text-3xl font-serif font-bold tracking-tighter text-slate-900">
+                Clauty<span class="text-indigo-600">.</span>
+            </h1>
         </div>
-        <ul class="flex gap-10 items-center">
-            <li>
-                <x-nav-link route="home">Home</x-nav-link>
+
+        <ul class="hidden md:flex gap-12 items-center">
+            <li class="group">
+                <x-nav-link route="home" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Home</x-nav-link>
             </li>
-            <li>
-                <x-nav-link route="cursos.index">Cursos</x-nav-link>
+            <li class="group">
+                <x-nav-link route="cursos.index" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Cursos</x-nav-link>
             </li>
-            <li>
-                <x-nav-link route="articulos.index">Artículos</x-nav-link>
+            <li class="group">
+                <x-nav-link route="articulos.index" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Artículos</x-nav-link>
             </li>
         </ul>
-        @auth
-        <div class="flex flex-col gap-2">
-            <form action="{{ route('admin.doLogout') }}" method="post">
-                @csrf
-                <button type="submit" class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg">
-                    {{ auth()->user()->email }} (Cerrar sesión)
-                </button>
-            </form>
 
-            @if (auth()->user()->rol === 'admin')
-            <a href="{{ route('dashboard') }}"
-                class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Admin</a>
+        <div class="flex items-center gap-6">
+            @auth
+            <div class="flex items-center gap-4 border-l pl-6 border-slate-200">
+                <div class="text-right hidden sm:block">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Conectado como</p>
+                    <p class="text-xs font-semibold text-slate-700">{{ auth()->user()->email }}</p>
+                </div>
+
+                <div class="flex gap-2">
+                    @if (auth()->user()->rol === 'admin')
+                    <a href="{{ route('dashboard') }}"
+                        class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
+                    @else
+                    <a href="{{ route('user.cursos') }}"
+                        class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-700 rounded-full hover:bg-slate-200 transition-all">Perfil</a>
+                    @endif
+
+                    <form action="{{ route('admin.doLogout') }}" method="post" class="inline">
+                        @csrf
+                        <button type="submit" class="p-2 text-slate-400 hover:text-red-500 transition-colors" title="Cerrar sesión">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
             @else
-            <a href="{{ route('user.cursos') }}"
-                class="p-2 h-10 w-30 bg-[var(--secondary-color)] rounded-lg text-center">Perfil</a>
-            @endif
+            <a href="{{ route('login') }}" class="group relative px-8 py-3 overflow-hidden rounded-full bg-indigo-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-200">
+                <span class="relative z-10 text-xs font-bold uppercase tracking-widest">Login</span>
+                <div class="absolute inset-0 h-full w-full bg-slate-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            </a>
+            @endauth
         </div>
-        @else
-        <div class="py-2 px-12 bg-[var(--secondary-color)] rounded-lg">
-            <x-nav-link route="login" class="text-center">Login</x-nav-link>
-        </div>
-        @endauth
     </nav>
 
     @if (session()->has('feedback.message'))
-    <div
-        class="p-5 m-10 w-fit rounded-xl 
-            @if (session()->get('feedback.type') == 'error') bg-red-500 text-white 
-            @elseif(session()->get('feedback.type') == 'success') 
-                bg-green-500 text-white @endif
-        ">
-        {!! session()->get('feedback.message') !!}
+    <div class="fixed bottom-10 right-10 z-[100] animate-bounce">
+        <div class="px-6 py-4 rounded-2xl shadow-2xl border flex items-center gap-4 
+            @if (session()->get('feedback.type') == 'error') bg-white border-red-100 text-red-600 
+            @else bg-white border-emerald-100 text-emerald-600 @endif">
+            <div class="h-2 w-2 rounded-full @if (session()->get('feedback.type') == 'error') bg-red-500 @else bg-emerald-500 @endif"></div>
+            <span class="text-sm font-medium italic">{!! session()->get('feedback.message') !!}</span>
+        </div>
     </div>
     @endif
 
@@ -65,12 +82,26 @@
         {{ $slot }}
     </main>
 
-    <footer class="w-full mt-20 bg-[var(--primary-color)] text-white p-6 flex justify-center gap-10">
-        <div>
-            <span class="font-bold">Alumno: </span>Lautaro Fernandez Szutner
-        </div>
-        <div>
-            <span class="font-bold">Comision: </span>DWN3AV
+    <footer class="w-full bg-white border-t border-slate-200 py-12">
+        <div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-2xl font-serif font-bold tracking-tighter text-slate-900">
+                Clauty<span class="text-indigo-600">.</span>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="text-slate-300">Estudiante</span>
+                    <span class="text-slate-600">Lautaro Fernandez Szutner</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-slate-300">Comisión</span>
+                    <span class="text-slate-600">DWN3AV</span>
+                </div>
+            </div>
+
+            <div class="text-slate-300 text-xs">
+                &copy; {{ date('Y') }} Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 </body>

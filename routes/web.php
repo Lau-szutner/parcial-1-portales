@@ -79,3 +79,6 @@ Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'index
 
 Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'register'])
     ->name('register');
+
+Route::post('/logout', [\App\Http\Controllers\RegisterController::class, 'logout'])
+    ->name('logout');

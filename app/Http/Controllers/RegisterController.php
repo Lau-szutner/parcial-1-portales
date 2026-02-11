@@ -34,6 +34,7 @@ class RegisterController extends Controller
         return redirect()->route("login");
     }
 
+
     /**
      * Store a newly created resource in storage.
      */

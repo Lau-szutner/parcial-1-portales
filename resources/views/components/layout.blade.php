@@ -29,6 +29,13 @@
             <li class="group">
                 <x-nav-link route="articulos.index" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Artículos</x-nav-link>
             </li>
+            {{-- NUEVO LINK DE PLANES --}}
+            <li class="group relative">
+                <x-nav-link route="suscripciones" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-2">
+                    Planes
+                    <span class="h-1.5 w-1.5 rounded-full bg-indigo-600 animate-pulse"></span>
+                </x-nav-link>
+            </li>
         </ul>
 
         <div class="flex items-center gap-6">
@@ -67,6 +74,7 @@
         </div>
     </nav>
 
+    {{-- Resto del body (Feedback, Main, Footer) se mantiene igual --}}
     @if (session()->has('feedback.message'))
     <div class="fixed bottom-10 right-10 z-[100] animate-bounce">
         <div class="px-6 py-4 rounded-2xl shadow-2xl border flex items-center gap-4 

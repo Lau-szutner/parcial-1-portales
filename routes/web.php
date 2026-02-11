@@ -82,3 +82,5 @@ Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'regi
 
 Route::post('/logout', [\App\Http\Controllers\RegisterController::class, 'logout'])
     ->name('logout');
+
+Route::get('/planes', [\App\Http\Controllers\SuscripcionController::class, 'index'])->name('suscripciones');

@@ -72,11 +72,6 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
 Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
     ->name('user.cursos');
 
-<<<<<<< HEAD
-// Register
-Route::get('/register', [RegisterController::class, 'index'])
-    ->name('register');
-=======
 
 
 
@@ -90,4 +85,3 @@ Route::post('/logout', [\App\Http\Controllers\RegisterController::class, 'logout
     ->name('logout');
 
 Route::get('/planes', [\App\Http\Controllers\SuscripcionController::class, 'index'])->name('suscripciones');
->>>>>>> refs/remotes/origin/main

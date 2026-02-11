@@ -8,18 +8,31 @@
     <title>Clauty :: {{ $title }} </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
 </head>
 
 <body class="font-sans bg-slate-50 min-h-screen flex flex-col text-slate-900">
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-5 flex justify-between items-center transition-all duration-300">
-        <div class="flex items-center">
+    {{-- NAVBAR CON GRID DE 3 COLUMNAS PARA CENTRADO PERFECTO --}}
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-5 grid grid-cols-3 items-center transition-all duration-300">
+
+        {{-- COLUMNA 1: LOGO --}}
+        <div class="flex justify-start">
             <h1 class="text-3xl font-serif font-bold tracking-tighter text-slate-900">
                 Clauty<span class="text-indigo-600">.</span>
             </h1>
         </div>
 
-        <ul class="hidden md:flex gap-12 items-center">
+        {{-- COLUMNA 2: MENÚ CENTRAL --}}
+        <ul class="hidden md:flex gap-10 justify-center items-center">
             <li class="group">
                 <x-nav-link route="home" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Home</x-nav-link>
             </li>
@@ -29,7 +42,6 @@
             <li class="group">
                 <x-nav-link route="articulos.index" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors">Artículos</x-nav-link>
             </li>
-            {{-- NUEVO LINK DE PLANES --}}
             <li class="group relative">
                 <x-nav-link route="suscripciones" class="text-sm uppercase tracking-[0.2em] font-medium text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-2">
                     Planes
@@ -38,21 +50,22 @@
             </li>
         </ul>
 
-        <div class="flex items-center gap-6">
+        {{-- COLUMNA 3: ACCIONES / AUTH --}}
+        <div class="flex justify-end items-center gap-6">
             @auth
             <div class="flex items-center gap-4 border-l pl-6 border-slate-200">
-                <div class="text-right hidden sm:block">
-                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Conectado como</p>
-                    <p class="text-xs font-semibold text-slate-700">{{ auth()->user()->email }}</p>
+                <div class="text-right hidden lg:block">
+                    <p class="text-[9px] uppercase tracking-widest text-slate-400 font-bold leading-none mb-1">Conectado como</p>
+                    <p class="text-xs font-semibold text-slate-700 leading-none">{{ auth()->user()->email }}</p>
                 </div>
 
                 <div class="flex gap-2">
                     @if (auth()->user()->rol === 'admin')
                     <a href="{{ route('dashboard') }}"
-                        class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
+                        class="px-4 py-2 text-[10px] font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
                     @else
                     <a href="{{ route('user.cursos') }}"
-                        class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-700 rounded-full hover:bg-slate-200 transition-all">Perfil</a>
+                        class="px-4 py-2 text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-700 rounded-full hover:bg-slate-200 transition-all">Perfil</a>
                     @endif
 
                     <form action="{{ route('admin.doLogout') }}" method="post" class="inline">
@@ -67,14 +80,14 @@
             </div>
             @else
             <a href="{{ route('login') }}" class="group relative px-8 py-3 overflow-hidden rounded-full bg-indigo-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-200">
-                <span class="relative z-10 text-xs font-bold uppercase tracking-widest">Login</span>
+                <span class="relative z-10 text-[10px] font-bold uppercase tracking-widest">Login</span>
                 <div class="absolute inset-0 h-full w-full bg-slate-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
             </a>
             @endauth
         </div>
     </nav>
 
-    {{-- Resto del body (Feedback, Main, Footer) se mantiene igual --}}
+    {{-- FEEDBACK MESSAGES --}}
     @if (session()->has('feedback.message'))
     <div class="fixed bottom-10 right-10 z-[100] animate-bounce">
         <div class="px-6 py-4 rounded-2xl shadow-2xl border flex items-center gap-4 
@@ -86,10 +99,12 @@
     </div>
     @endif
 
+    {{-- CONTENIDO PRINCIPAL --}}
     <main class="flex-grow">
         {{ $slot }}
     </main>
 
+    {{-- FOOTER --}}
     <footer class="w-full bg-white border-t border-slate-200 py-12">
         <div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-2xl font-serif font-bold tracking-tighter text-slate-900">

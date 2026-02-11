@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NivelSeeder::class,
             UserSeeder::class,
-            TopicSeeder::class, // Asegúrate de que los topics existan
-            ArticleSeeder::class, // Asegúrate de que los articles existan
+            TopicSeeder::class, 
+            ArticleSeeder::class, 
             CursosTableSeeder::class,
             ArticlesHasGenresSeeder::class,
             UsersHaveCursosSeeder::class

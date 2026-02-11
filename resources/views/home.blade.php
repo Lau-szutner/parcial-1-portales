@@ -5,92 +5,151 @@
  */
 ?>
 
-<x-layout class="font-serif">
+<x-layout>
     <x-slot:title>Home</x-slot:title>
 
-    <section class="container mx-auto flex flex-col lg:flex-row m-5 lg:m-10 gap-8 items-center">
-        <div class="w-full lg:w-7/12">
-            <img src="{{ asset('images/home-01.webp') }}"
-                alt="Persona trabajando en una computadora con código en pantalla, usando auriculares en un entorno de trabajo nocturno" "
-                class=" rounded-lg w-full h-auto">
-        </div>
-
-        <div class="flex flex-col items-center lg:items-start justify-center w-full lg:w-7/12 gap-6 text-center lg:text-left">
-            <h2 class="font-bold text-3xl lg:text-4xl">
-                Bienvenidos a Clauty
-            </h2>
-            <p class="text-base lg:text-lg">
-                Tu espacio para aprender y crecer. Aquí encontrarás una variedad de cursos y artículos diseñados para
-                ayudarte a desarrollar nuevas habilidades y profundizar en tus conocimientos. Ya sea que estés
-                buscando aprender algo nuevo o mejorar lo que ya sabes, Clauty es el lugar ideal para tu crecimiento
-                personal y profesional. ¡Explora nuestros contenidos y comienza tu camino hacia el éxito hoy mismo!
-            </p>
-        </div>
-    </section>
-
-    <section class="mx-auto bg-[var(--primary-color)] flex flex-col items-center py-10 px-4">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl text-[var(--accent-color)] text-center">
-            Los mejores cursos por profesionales
-        </h2>
-
-        <div class="container mx-auto flex flex-col md:flex-row gap-6 justify-center py-10">
-            <img src="{{ asset('/images/cursos/javascript.png') }}"
-                alt="Curso introductorio de JavaScript para desarrollo web"
-                class="rounded-lg w-full md:w-1/3">
-
-            <img src="{{ asset('/images/cursos/laravel.png') }}"
-                alt="Curso de Laravel para desarrollo de aplicaciones web con PHP"
-                class="rounded-lg w-full md:w-1/3">
-
-            <img src="{{ asset('/images/cursos/php.png') }}"
-                alt="Curso de PHP para programación backend y desarrollo web"
-                class="rounded-lg w-full md:w-1/3">
-        </div>
-
-        <div class="bg-[var(--secondary-color)] py-2 px-6 rounded-xl text-white">
-            <x-nav-link route="cursos.index">Cursos</x-nav-link>
-        </div>
-    </section>
-
-
-    <section class="container mx-auto flex flex-col items-center px-4">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl my-10 text-center">
-            Los mejores artículos de la web
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-            @foreach ($articles as $article)
-            <div class="bg-[var(--primary-color)] p-4 rounded-lg text-[var(--accent-color)] flex flex-col gap-5">
-                <h3 class="text-xl lg:text-2xl font-bold">
-                    {{ $article->title }}
-                </h3>
-
-                <p class="text-sm lg:text-base">
-                    <strong>Autor:</strong> {{ $article->author }}
+    {{-- SECCIÓN HERO: Bienvenida con impacto visual --}}
+    <section class="relative overflow-hidden bg-white py-20 lg:py-32">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row gap-16 items-center">
+            {{-- Texto Hero --}}
+            <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left animate-fade-in">
+                <span class="text-indigo-600 font-bold tracking-[0.3em] uppercase text-xs mb-4">Plataforma de Aprendizaje</span>
+                <h2 class="font-serif text-5xl lg:text-7xl text-slate-900 leading-[1.1] mb-8 tracking-tighter">
+                    Bienvenidos a <span class="text-indigo-600">Clauty</span>
+                </h2>
+                <p class="text-lg lg:text-xl text-slate-500 leading-relaxed max-w-xl mb-10 font-light">
+                    Tu espacio para aprender y crecer. Descubre cursos diseñados por expertos y artículos que profundizan en las tecnologías que mueven el mundo hoy.
                 </p>
-
-                <img src="{{ $article->img }}"
-                    alt="{{ $article->title }}"
-                    class="w-full h-48 object-cover rounded-lg">
-
-                <p class="text-sm lg:text-base">
-                    {{ $article->excerpt }}
-                </p>
-
-                <div class="mt-auto">
-                    <p class="mb-2 text-sm">
-                        <strong>Categoría:</strong> {{ $article->category }}
-                    </p>
-
-                    <a href="{{ route('articles.view', ['id' => $article->id]) }}"
-                        class="block bg-[var(--secondary-color)] h-10 rounded-lg w-full text-white flex items-center justify-center hover:scale-105 transition">
-                        Leer
+                <div class="flex gap-4">
+                    <a href="#cursos" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl hover:shadow-indigo-200">
+                        Comenzar ahora
                     </a>
                 </div>
             </div>
-            @endforeach
+
+            {{-- Imagen Hero con efecto de profundidad --}}
+            <div class="w-full lg:w-1/2 relative group">
+                <div class="absolute -inset-4 bg-indigo-100/50 rounded-[2rem] blur-2xl group-hover:bg-indigo-200/50 transition-colors duration-500"></div>
+                <img src="{{ asset('images/home-01.webp') }}"
+                    alt="Espacio de trabajo"
+                    class="relative rounded-3xl shadow-2xl w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-[1.02]">
+            </div>
         </div>
     </section>
 
+    {{-- SECCIÓN CURSOS: Galería Destacada --}}
+    <section id="cursos" class="bg-slate-900 py-24 px-6 overflow-hidden">
+        <div class="container mx-auto text-center mb-16">
+            <span class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-[10px]">Formación Profesional</span>
+            <h2 class="font-serif text-4xl lg:text-5xl text-white mt-4 mb-4">Excelencia Académica</h2>
+            <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-slate-400 font-light tracking-wide text-lg max-w-2xl mx-auto">
+                Aprende con los mejores cursos dictados por expertos de la industria.
+            </p>
+        </div>
 
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+            @php
+            $destacados = [
+            ['img' => 'javascript.png', 'name' => 'JavaScript'],
+            ['img' => 'laravel.png', 'name' => 'Laravel'],
+            ['img' => 'php.png', 'name' => 'PHP']
+            ];
+            @endphp
+
+            @foreach($destacados as $item)
+            <a href="{{ route('cursos.index') }}" class="group relative block bg-slate-800 rounded-2xl border border-white/5 overflow-hidden transition-all duration-500 hover:border-indigo-500/50 hover:shadow-[0_0_30px_-10px_rgba(99,102,241,0.3)]">
+                {{-- Contenedor de Imagen Horizontal (16:9) --}}
+                <div class="aspect-video overflow-hidden">
+                    <img src="{{ asset('/images/cursos/' . $item['img']) }}"
+                        alt="Curso de {{ $item['name'] }}"
+                        class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+
+                    {{-- Overlay Gradiente --}}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                </div>
+
+                {{-- Texto flotante sobre la imagen --}}
+                <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <p class="text-white font-serif text-xl tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+                        {{ $item['name'] }}
+                    </p>
+                    <p class="text-indigo-400 text-[10px] font-bold uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        Ver programa completo →
+                    </p>
+                </div>
+            </a>
+            @endforeach
+        </div>
+
+        {{-- Botón de Acción Principal --}}
+        <div class="flex justify-center">
+            <a href="{{ route('cursos.index') }}"
+                class="group relative inline-flex items-center gap-4 bg-indigo-600 text-white px-12 py-5 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 hover:bg-indigo-500 hover:-translate-y-1 transition-all duration-300">
+                Explorar todos los cursos
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    {{-- SECCIÓN ARTÍCULOS: Estilo Editorial --}}
+    <section class="container mx-auto py-24 px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div class="max-w-xl text-left">
+                <h2 class="font-serif text-4xl lg:text-6xl text-slate-900 mb-4">El Blog</h2>
+                <p class="text-slate-500 text-lg font-light">Perspectivas, tutoriales y las últimas novedades del mundo tech.</p>
+            </div>
+            <x-nav-link route="articulos.index" class="text-indigo-600 font-bold text-xs uppercase tracking-widest border-b-2 border-indigo-100 hover:border-indigo-600 transition-all pb-1">
+                Leer todos los artículos
+            </x-nav-link>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            @foreach ($articles as $index => $article)
+            <article class="group flex flex-col bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 animate-fade-in">
+
+                {{-- Imagen del Artículo con borde inferior sutil --}}
+                <div class="relative overflow-hidden aspect-video border-b border-slate-100">
+                    <img src="{{ $article->img }}"
+                        alt="{{ $article->title }}"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                            {{ $article->category }}
+                        </span>
+                    </div>
+                </div>
+
+                {{-- Contenido del Artículo con Padding --}}
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 text-slate-400 text-[10px] mb-4 font-bold uppercase tracking-[0.2em]">
+                        <span>Por {{ $article->author }}</span>
+                        <span class="h-1 w-1 bg-indigo-400 rounded-full"></span>
+                        <span>5 min lectura</span>
+                    </div>
+
+                    <h3 class="text-2xl font-serif text-slate-800 mb-4 group-hover:text-indigo-600 transition-colors leading-tight">
+                        {{ $article->title }}
+                    </h3>
+
+                    <p class="text-slate-500 leading-relaxed mb-8 font-light line-clamp-3 text-sm">
+                        {{ $article->excerpt }}
+                    </p>
+
+                    {{-- Enlace inferior estilizado --}}
+                    <a href="{{ route('articles.view', ['id' => $article->id]) }}"
+                        class="mt-auto pt-6 border-t border-slate-50 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-900 group-hover:text-indigo-600 transition-all duration-300">
+                        <span>Continuar leyendo</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+            @endforeach
+        </div>
+    </section>
 </x-layout>

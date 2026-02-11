@@ -39,7 +39,7 @@
         <div class="container mx-auto max-w-6xl px-6 mb-16 animate-fade-in delay-1">
             <div class="relative h-[300px] md:h-[500px] overflow-hidden rounded-[2rem] shadow-2xl">
                 <img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
-                    src="../{{ $article->img }}"
+                    src="{{ $article->img }}"
                     alt="{{ $article->title }}">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
             </div>
@@ -55,7 +55,9 @@
                         animate-fade-in delay-2">
 
                 {{-- Aquí se renderiza el contenido --}}
-                {!! $article->body !!}
+                <div class="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
+                    {{ $article->body }}
+                </div>
 
             </div>
 

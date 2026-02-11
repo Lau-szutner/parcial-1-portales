@@ -70,3 +70,12 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
 
 Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
     ->name('user.cursos');
+
+
+
+
+Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'index'])
+    ->name('admin.register');
+
+Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'register'])
+    ->name('register');

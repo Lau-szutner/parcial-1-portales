@@ -45,6 +45,8 @@
   de edición.
 - [noticias] El autor de la entrada debería ser el
   usuario autenticado.
+- Falta el regsitro de usuarios.
+- Upload de imágenes.
 
 ## Sin hacer
 
@@ -54,8 +56,6 @@
   en inglés.
 - [noticias-form] Hay <label>s que no tienen la
   mayúscula en la primera letra.
-- Falta el regsitro de usuarios.
-- Upload de imágenes.
 - Hay campos de formularios que no tienen un
   label (o atributo aria-\* equivalente)
   debidamente asociado. El placeholder no es un

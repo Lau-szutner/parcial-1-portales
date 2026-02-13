@@ -26,7 +26,7 @@
                     </div>
                     <div class="md:ml-auto">
                         <span class="px-4 py-2 bg-indigo-500/20 border border-indigo-400/30 text-indigo-100 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
-                            {{ auth()->user()->rol ?? 'Estudiante' }}
+                            {{ auth()->user()->rol === 'student' ? 'Estudiante' : 'Administrador' }}
                         </span>
                     </div>
                 </div>

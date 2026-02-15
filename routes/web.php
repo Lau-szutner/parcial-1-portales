@@ -5,6 +5,7 @@ use App\Http\Middleware\CheckRole;
 use App\Models\User;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MercadoPagoController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
@@ -85,3 +86,7 @@ Route::post('/logout', [\App\Http\Controllers\RegisterController::class, 'logout
     ->name('logout');
 
 Route::get('/planes', [\App\Http\Controllers\SuscripcionController::class, 'index'])->name('suscripciones');
+
+
+Route::get('/crear-preferencia', [MercadoPagoController::class, 'crearPreferencia']);
+//{"id":"3202141953-5f840558-b090-4ece-9552-cd4dc8408f80"}

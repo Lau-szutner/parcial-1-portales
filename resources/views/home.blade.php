@@ -26,6 +26,7 @@
                     </a>
                 </div>
             </div>
+            <!-- Container para o botão de pagamento -->
 
             {{-- Imagen Hero con efecto de profundidad --}}
             <div class="w-full lg:w-1/2 relative group">

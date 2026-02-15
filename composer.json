@@ -12,7 +12,8 @@
         "erusev/parsedown": "^1.7",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "league/commonmark": "^2.5"
+        "league/commonmark": "^2.5",
+        "mercadopago/dx-php": "^3.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",

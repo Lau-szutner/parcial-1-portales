@@ -131,8 +131,30 @@
             <div class="text-slate-300 text-xs">
                 &copy; {{ date('Y') }} Todos los derechos reservados.
             </div>
+
         </div>
+        <!-- Container para o botão de pagamento -->
     </footer>
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const publicKey = "APP_USR-9137f035-9de4-41a1-939a-a9d2945baf8a";
+        const preferenceId = "3202141953-5f840558-b090-4ece-9552-cd4dc8408f80";
+
+        const mp = new MercadoPago(publicKey);
+
+        const bricksBuilder = mp.bricks();
+
+        const renderWalletBrick = async (bricksBuilder) => {
+            await bricksBuilder.create("wallet", "walletBrick_container", {
+                initialization: {
+                    preferenceId: preferenceId,
+                }
+            });
+        };
+
+        renderWalletBrick(bricksBuilder);
+    </script>
 </body>
 
 </html>

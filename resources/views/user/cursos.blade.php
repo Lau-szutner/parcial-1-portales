@@ -116,5 +116,7 @@
             </div>
             @endif
         </div>
+
     </main>
+
 </x-layout>

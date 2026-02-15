@@ -17,6 +17,7 @@
             </p>
         </div>
 
+
         {{-- GRID DE PRECIOS --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-center">
 
@@ -30,10 +31,13 @@
                     <p class="text-slate-400 text-sm mt-4">Ideal para curiosos y primeros pasos.</p>
                 </div>
 
-                <a href="#" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-slate-900 hover:text-slate-900 transition-colors">
-                    Comenzar Ahora
+
+
+                <a href="{{ auth()->check() ? route('user.cursos') : ('login') }}" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-slate-900 hover:text-slate-900 transition-colors">
+                    <!-- Container para o botão de pagamento -->
                 </a>
 
+                <div id="walletBrick_container"></div>
                 <ul class="mt-8 space-y-4">
                     <li class="flex items-center gap-3 text-sm text-slate-600">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
@@ -101,6 +105,7 @@
             </div>
 
             {{-- PLAN 3: AVANZADO --}}
+
             <div class="bg-white border border-slate-200 rounded-[2.5rem] p-10 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                 <div class="mb-6">
                     <h3 class="text-emerald-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Senior Elite</h3>
@@ -139,5 +144,6 @@
                 <a href="#" class="text-slate-900 underline decoration-indigo-300 decoration-2 underline-offset-4 hover:text-indigo-600">Hablemos.</a>
             </p>
         </div>
+
     </main>
 </x-layout>

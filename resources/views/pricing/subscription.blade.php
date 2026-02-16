@@ -34,10 +34,9 @@
 
 
                 <a href="{{ auth()->check() ? route('user.cursos') : ('login') }}" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-slate-900 hover:text-slate-900 transition-colors">
-                    <!-- Container para o botão de pagamento -->
+                    Comenzar ahora
                 </a>
 
-                <div id="walletBrick_container"></div>
                 <ul class="mt-8 space-y-4">
                     <li class="flex items-center gap-3 text-sm text-slate-600">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
@@ -74,10 +73,11 @@
                     </div>
                     <p class="text-slate-400 text-sm mt-4">Para quienes buscan trabajo activamente.</p>
                 </div>
-
-                <a href="#" class="block w-full py-5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-widest text-center hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 transition-all">
+                <a href="{{ route('planes.pro') }}"
+                    class="block w-full py-5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-widest text-center hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 transition-all">
                     Obtener Acceso Pro
                 </a>
+
 
                 <div class="mt-8 pt-8 border-t border-slate-800">
                     <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-4">Todo lo de Starter, más:</p>
@@ -106,7 +106,7 @@
 
             {{-- PLAN 3: AVANZADO --}}
 
-            <div class="bg-white border border-slate-200 rounded-[2.5rem] p-10 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+            <div class=" bg-white border border-slate-200 rounded-[2.5rem] p-10 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                 <div class="mb-6">
                     <h3 class="text-emerald-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Senior Elite</h3>
                     <div class="flex items-baseline gap-1">

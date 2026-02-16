@@ -90,3 +90,16 @@ Route::get('/planes', [\App\Http\Controllers\SuscripcionController::class, 'inde
 
 Route::get('/crear-preferencia', [MercadoPagoController::class, 'crearPreferencia']);
 //{"id":"3202141953-5f840558-b090-4ece-9552-cd4dc8408f80"}
+
+
+Route::get('/planes/pro', function () {
+    return view('pricing.pro');
+})->name('planes.pro');
+
+Route::get('/planes/starter', function () {
+    return view('pricing.starter');
+})->name('planes.starter');
+
+Route::get('/planes/senior', function () {
+    return view('pricing.senior');
+})->name('planes.senior');

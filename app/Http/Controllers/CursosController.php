@@ -38,4 +38,23 @@ class CursosController extends Controller
             'cursos' => $cursos,
         ]);
     }
+
+    public function add_curso($id)
+    {
+
+        $curso = Curso::findOrFail($id);
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        // 4. Agregamos el curso
+        $user->cursos()->syncWithoutDetaching([$id]);
+
+        return redirect()->route('user.cursos')->with('success', "Has sido inscrito en: {$curso->nombre}");
+    }
 }

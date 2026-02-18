@@ -73,6 +73,8 @@ Route::post('/profile', [\App\Http\Controllers\UserController::class, 'updatePro
 Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perfil'])
     ->name('user.cursos');
 
+Route::post('/cursos/{curso}/add', [\App\Http\Controllers\CursosController::class, 'add_curso'])->name('add.curso');
+
 
 
 

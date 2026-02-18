@@ -4,7 +4,13 @@
  * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Curso[] $cursos
  */
 ?>
-
+@php
+$nombresNiveles = [
+1 => 'Principiante',
+2 => 'Intermedio',
+3 => 'Avanzado'
+];
+@endphp
 <x-layout>
     <x-slot:title>Cursos Disponibles</x-slot:title>
 
@@ -38,8 +44,8 @@
 
                     {{-- Badge de Nivel Minimalista --}}
                     <div class="absolute top-6 left-6">
-                        <span class="bg-white/20 backdrop-blur-md text-white border border-white/30 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
-                            {{ $curso->nivel }}
+                        <span class="bg-slate-100 text-slate-500 text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
+                            {{ $nombresNiveles[$curso->nivel] ?? 'Desconocido' }}
                         </span>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -89,11 +95,11 @@
                             </a>
                         </div>
                         @else
-                        <form action="{{ route('user.cursos', $curso->id) }}" method="POST">
+                        <form action="{{ route('add.curso', $curso->id) }}" method="POST">
                             @csrf
                             <button type="submit"
                                 class="w-full bg-indigo-600 text-white py-5 rounded-full text-xs uppercase tracking-[0.2em] font-black shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:shadow-indigo-300 transform transition-all active:scale-95">
-                                Adquirir membresía
+                                Agregar curso
                             </button>
                         </form>
                         @endif

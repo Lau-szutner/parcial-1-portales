@@ -6,7 +6,13 @@
  * @var string $usuario
  */
 ?>
-
+@php
+$nombresNiveles = [
+1 => 'Principiante',
+2 => 'Intermedio',
+3 => 'Avanzado'
+];
+@endphp
 <x-layout>
     <x-slot:title>Mi Aprendizaje - {{ $usuario }}</x-slot:title>
 
@@ -94,7 +100,7 @@
                     <div class="md:w-3/5 p-8 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
                             <span class="bg-slate-100 text-slate-500 text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                                {{ $curso->nivel }}
+                                {{ $nombresNiveles[$curso->nivel] ?? 'Desconocido' }}
                             </span>
                             <span class="text-slate-400 text-[10px] font-medium flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

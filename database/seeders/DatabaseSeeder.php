@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Subscription;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,11 +23,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NivelSeeder::class,
             UserSeeder::class,
-            TopicSeeder::class, 
-            ArticleSeeder::class, 
+            TopicSeeder::class,
+            ArticleSeeder::class,
             CursosTableSeeder::class,
             ArticlesHasGenresSeeder::class,
-            UsersHaveCursosSeeder::class
+            UsersHaveCursosSeeder::class,
+            SubscriptionSeeder::class
         ]);
     }
 }

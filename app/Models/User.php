@@ -61,4 +61,20 @@ class User extends Authenticatable
             'cursos_id'               // Clave foránea en la tabla intermedia para el modelo Curso
         );
     }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    /**
+     * Método útil para saber si el usuario tiene una suscripción activa
+     */
+    public function hasActiveSubscription()
+    {
+        return $this->subscriptions()
+            ->where('status', 'active')
+            ->where('ends_at', '>', now())
+            ->exists();
+    }
 }

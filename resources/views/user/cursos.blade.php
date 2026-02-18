@@ -2,6 +2,7 @@
 
 /**
  * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Curso[] $cursos
+ * @var \App\Models\Subscription|null $subscription
  * @var string $usuario
  */
 ?>
@@ -15,7 +16,7 @@
         @auth
         <div class="max-w-4xl mx-auto mb-20 animate-fade-in">
             <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
-                {{-- Header del Perfil con gradiente sutil --}}
+                {{-- Header del Perfil con gradiente --}}
                 <div class="bg-gradient-to-r from-slate-900 to-indigo-900 px-8 py-10 md:px-12 flex flex-col md:flex-row items-center gap-6">
                     <div class="h-24 w-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl font-serif">
                         {{ substr(auth()->user()->name, 0, 1) }}
@@ -23,6 +24,19 @@
                     <div class="text-center md:text-left">
                         <h3 class="text-2xl font-serif text-white">{{ auth()->user()->name }}</h3>
                         <p class="text-indigo-200 text-sm font-light italic">{{ auth()->user()->email }}</p>
+
+                        {{-- Badge de Suscripción --}}
+                        @if($subscription)
+                        <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 rounded-lg">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-emerald-100 text-[10px] font-bold uppercase tracking-widest">
+                                Plan {{ $subscription->plan_name }} Activo
+                            </span>
+                        </div>
+                        @endif
                     </div>
                     <div class="md:ml-auto">
                         <span class="px-4 py-2 bg-indigo-500/20 border border-indigo-400/30 text-indigo-100 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
@@ -38,12 +52,16 @@
                         <p class="text-2xl font-serif text-slate-800">{{ $cursos->count() }}</p>
                     </div>
                     <div class="p-8 text-center">
-                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Miembro desde</p>
-                        <p class="text-2xl font-serif text-slate-800">{{ auth()->user()->created_at->format('M Y') }}</p>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Plan Actual</p>
+                        <p class="text-xl font-serif text-indigo-600 capitalize">
+                            {{ $subscription ? $subscription->plan_name : 'Ninguno' }}
+                        </p>
                     </div>
                     <div class="p-8 text-center">
-                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Estado de Cuenta</p>
-                        <p class="text-2xl font-serif text-emerald-500 italic text-sm">✓ Verificada</p>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1 italic">Vencimiento</p>
+                        <p class="text-sm font-serif text-slate-800">
+                            {{ $subscription ? $subscription->ends_at->format('d M, Y') : 'N/A' }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -108,7 +126,7 @@
                 @endforeach
             </div>
 
-            {{-- Empty State (si no tiene cursos) --}}
+            {{-- Empty State --}}
             @if($cursos->isEmpty())
             <div class="text-center py-20 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200">
                 <p class="text-slate-400 font-serif text-xl italic">Aún no has comenzado ninguna aventura...</p>
@@ -118,5 +136,4 @@
         </div>
 
     </main>
-
 </x-layout>

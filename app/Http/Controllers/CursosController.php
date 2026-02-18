@@ -11,13 +11,22 @@ class CursosController extends Controller
 {
     public function perfil()
     {
-
+        /** @var \App\Models\User $user */
         $user = Auth::user(); // Obtiene el usuario autenticado
-        $cursos = $user->cursos; // Relación 'cursos' para obtener los cursos del usuario
-        // Pasamos los cursos y el nombre del usuario a la vista
+
+        // Traemos los cursos
+        $cursos = $user->cursos;
+
+        // OBTENER LA SUSCRIPCIÓN
+        // Usamos first() para obtener el objeto con los datos, 
+        // y opcionalmente ordenamos por la más reciente.
+        $subscription = $user->subscriptions()->where('status', 'active')->latest()->first();
+
+        // Pasamos todo a la vista
         return view('user.cursos', [
             'cursos' => $cursos,
-            'usuario' => $user->name, // Pasamos el nombre del usuario
+            'usuario' => $user->name,
+            'subscription' => $subscription, // <--- Ahora la vista la reconoce
         ]);
     }
 

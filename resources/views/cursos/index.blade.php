@@ -66,7 +66,7 @@
                     {{-- Acciones con Lógica de Estado --}}
                     <div class="mt-auto border-t border-slate-50 pt-8">
                         @guest
-                        <a href="{{ route('login') }}?reason=adquirir"
+                        <a href="{{ auth()->check() ? route('login') : route('login') }}"
                             class="flex w-full items-center justify-center border-2 border-slate-900 py-4 rounded-full text-slate-900 font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 hover:bg-slate-900 hover:text-white group">
                             Explorar Curso
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

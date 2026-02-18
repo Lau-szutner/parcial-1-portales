@@ -47,11 +47,11 @@
   usuario autenticado.
 - Falta el regsitro de usuarios.
 - Upload de imágenes.
+- [usuarios-admin] Falta cuánto se pagó por cada
+  curso.
 
 ## Sin hacer
 
-- [usuarios-admin] Falta cuánto se pagó por cada
-  curso.
 - [noticias] Algunos textos están en español y otros
   en inglés.
 - [noticias-form] Hay <label>s que no tienen la

@@ -33,7 +33,7 @@
 
 
 
-                <a href="{{ auth()->check() ? route('user.cursos') : ('login') }}" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-slate-900 hover:text-slate-900 transition-colors">
+                <a href="{{ auth()->check() ? route('user.cursos') : route('planes.starter') }}" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-slate-900 hover:text-slate-900 transition-colors">
                     Comenzar ahora
                 </a>
 
@@ -73,7 +73,7 @@
                     </div>
                     <p class="text-slate-400 text-sm mt-4">Para quienes buscan trabajo activamente.</p>
                 </div>
-                <a href="{{ route('planes.pro') }}"
+                <a href="{{ auth()->check() ? route('user.cursos') : route('planes.pro') }}"
                     class="block w-full py-5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-widest text-center hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 transition-all">
                     Obtener Acceso Pro
                 </a>
@@ -116,7 +116,7 @@
                     <p class="text-slate-400 text-sm mt-4">Maestría técnica y arquitectura.</p>
                 </div>
 
-                <a href="#" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-emerald-500 hover:text-emerald-600 transition-colors">
+                <a href="{{ auth()->check() ? route('user.cursos') : route('planes.senior') }}" class="block w-full py-4 rounded-xl border-2 border-slate-100 text-slate-600 font-bold text-xs uppercase tracking-widest text-center hover:border-emerald-500 hover:text-emerald-600 transition-colors">
                     Contactar Ventas
                 </a>
 

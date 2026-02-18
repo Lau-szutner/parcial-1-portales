@@ -86,7 +86,7 @@
             </div>
             @else
             <a href="{{ route('login') }}" class="group relative px-8 py-3 overflow-hidden rounded-full bg-indigo-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-200">
-                <span class="relative z-10 text-[10px] font-bold uppercase tracking-widest">Login</span>
+                <span class="relative z-10 text-sm font-bold uppercase tracking-widest">Login</span>
                 <div class="absolute inset-0 h-full w-full bg-slate-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
             </a>
             @endauth

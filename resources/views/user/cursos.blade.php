@@ -39,7 +39,7 @@ $nombresNiveles = [
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
                             <span class="text-emerald-100 text-[10px] font-bold uppercase tracking-widest">
-                                Plan {{ $subscription->plan_name }} Activo
+                                Plan {{ $subscription->plan_level }} Activo
                             </span>
                         </div>
                         @endif
@@ -60,7 +60,7 @@ $nombresNiveles = [
                     <div class="p-8 text-center">
                         <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Plan Actual</p>
                         <p class="text-xl font-serif text-indigo-600 capitalize">
-                            {{ $subscription ? $subscription->plan_name : 'Ninguno' }}
+                            {{ $subscription ? $subscription->plan_level : 'Ninguno' }}
                         </p>
                     </div>
                     <div class="p-8 text-center">

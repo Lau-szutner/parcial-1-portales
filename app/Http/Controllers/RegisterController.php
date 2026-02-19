@@ -33,7 +33,7 @@ class RegisterController extends Controller
 
         // 2. Creamos la suscripción inicial vinculada a este usuario
         $user->subscriptions()->create([
-            'plan_name' => 'starter',
+            'plan_level' => 1,
             'status' => 'active',
             'starts_at' => now(),
             'ends_at' => now()->addMonths(12),

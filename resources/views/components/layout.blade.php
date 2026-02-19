@@ -68,10 +68,10 @@
                 <div class="flex gap-2">
                     @if (auth()->user()->rol === 'admin')
                     <a href="{{ route('dashboard') }}"
-                        class="px-4 py-2 text-[10px] font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
+                        class="px-4 py-2 text-sm font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
                     @else
                     <a href="{{ route('user.cursos') }}"
-                        class="px-4 py-2 text-sm font-bold uppercase tracking-widest bg-slate-100 text-slate-700 rounded-full bg-slate-200  hover:bg-slate-300 transition-all">Perfil</a>
+                        class="px-4 py-2 text-sm font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Perfil</a>
                     @endif
 
                     <form action="{{ route('admin.doLogout') }}" method="post" class="inline">

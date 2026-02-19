@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('plan_name', ['starter', 'pro', 'senior'])->default('starter');
+
+            // Cambiado a tinyInteger para nivel 1, 2 o 3
+            $table->tinyInteger('plan_level')->default(1);
+
             $table->string('status')->default('active');
             $table->timestamp('starts_at')->useCurrent();
             $table->timestamp('ends_at')->nullable();

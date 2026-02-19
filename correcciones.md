@@ -49,14 +49,15 @@
 - Upload de imágenes.
 - [usuarios-admin] Falta cuánto se pagó por cada
   curso.
-
-## Sin hacer
-
 - [noticias] Algunos textos están en español y otros
   en inglés.
 - [noticias-form] Hay <label>s que no tienen la
   mayúscula en la primera letra.
+
+## Sin hacer
+
 - Hay campos de formularios que no tienen un
   label (o atributo aria-\* equivalente)
   debidamente asociado. El placeholder no es un
   reemplazo semántico. Por ejemplo, "Imagen" en [noticias-form].
+- REVISAR QUE SE USEN MIDDLEWARES

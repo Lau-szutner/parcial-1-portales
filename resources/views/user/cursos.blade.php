@@ -1,28 +1,46 @@
-<?php
-
-/**
- * @var \Illuminate\Database\Eloquent\Collection|\App\Models\Curso[] $cursos
- * @var \App\Models\Subscription|null $subscription
- * @var string $usuario
- */
-?>
 @php
+// Map de niveles para mostrar en los cursos
 $nombresNiveles = [
 1 => 'Principiante',
 2 => 'Intermedio',
-3 => 'Avanzado'
+3 => 'Avanzado',
 ];
+
+// Map de planes según nivel de subscripción
+$planesNiveles = [
+1 => 'Starter',
+2 => 'Pro',
+3 => 'Senior',
+];
+
+// Si el usuario tiene subscripción activa, obtenemos su nivel
+$subscriptionLevel = $subscription ? $subscription->plan_level : null;
 @endphp
+
 <x-layout>
     <x-slot:title>Mi Aprendizaje - {{ $usuario }}</x-slot:title>
 
     <main class="container mx-auto px-6 py-16">
 
-        {{-- SECCIÓN PERFIL DE USUARIO --}}
+        {{-- Mensajes de flash --}}
+        @if(session('success'))
+        <div class="max-w-4xl mx-auto mb-8 p-4 rounded-xl bg-emerald-100 text-emerald-800 font-bold shadow">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="max-w-4xl mx-auto mb-8 p-4 rounded-xl bg-red-100 text-red-800 font-bold shadow">
+            {{ session('error') }}
+        </div>
+        @endif
+
+        {{-- Perfil de usuario --}}
         @auth
         <div class="max-w-4xl mx-auto mb-20 animate-fade-in">
             <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
-                {{-- Header del Perfil con gradiente --}}
+
+                {{-- Header --}}
                 <div class="bg-gradient-to-r from-slate-900 to-indigo-900 px-8 py-10 md:px-12 flex flex-col md:flex-row items-center gap-6">
                     <div class="h-24 w-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl font-serif">
                         {{ substr(auth()->user()->name, 0, 1) }}
@@ -31,7 +49,7 @@ $nombresNiveles = [
                         <h3 class="text-2xl font-serif text-white">{{ auth()->user()->name }}</h3>
                         <p class="text-indigo-200 text-sm font-light italic">{{ auth()->user()->email }}</p>
 
-                        {{-- Badge de Suscripción --}}
+                        {{-- Badge de suscripción --}}
                         @if($subscription)
                         <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 rounded-lg">
                             <span class="relative flex h-2 w-2">
@@ -39,7 +57,7 @@ $nombresNiveles = [
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
                             <span class="text-emerald-100 text-[10px] font-bold uppercase tracking-widest">
-                                Plan {{ $subscription->plan_level }} Activo
+                                Plan {{ $planesNiveles[$subscription->plan_level] ?? 'Ninguno' }} Activo
                             </span>
                         </div>
                         @endif
@@ -60,7 +78,7 @@ $nombresNiveles = [
                     <div class="p-8 text-center">
                         <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Plan Actual</p>
                         <p class="text-xl font-serif text-indigo-600 capitalize">
-                            {{ $subscription ? $subscription->plan_level : 'Ninguno' }}
+                            {{ $subscription ? $planesNiveles[$subscription->plan_level] : 'Ninguno' }}
                         </p>
                     </div>
                     <div class="p-8 text-center">
@@ -74,7 +92,7 @@ $nombresNiveles = [
         </div>
         @endauth
 
-        {{-- SECCIÓN GRID DE CURSOS --}}
+        {{-- Grid de cursos --}}
         <div class="max-w-7xl mx-auto">
             <div class="flex items-end justify-between mb-12 px-2 animate-fade-in delay-1">
                 <div>
@@ -100,7 +118,8 @@ $nombresNiveles = [
                     <div class="md:w-3/5 p-8 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
                             <span class="bg-slate-100 text-slate-500 text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                                {{ $nombresNiveles[$curso->nivel] ?? 'Desconocido' }}
+
+                                {{ $subscription ? $planesNiveles[$subscription->plan_level] : 'Ninguno' }}
                             </span>
                             <span class="text-slate-400 text-[10px] font-medium flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,7 +151,7 @@ $nombresNiveles = [
                 @endforeach
             </div>
 
-            {{-- Empty State --}}
+            {{-- Empty state --}}
             @if($cursos->isEmpty())
             <div class="text-center py-20 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200">
                 <p class="text-slate-400 font-serif text-xl italic">Aún no has comenzado ninguna aventura...</p>

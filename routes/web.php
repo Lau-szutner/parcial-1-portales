@@ -76,8 +76,6 @@ Route::get('/user/cursos', [\App\Http\Controllers\CursosController::class, 'perf
 Route::post('/cursos/{curso}/add', [\App\Http\Controllers\CursosController::class, 'add_curso'])->name('add.curso');
 
 
-
-
 Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'index'])
     ->name('admin.register');
 
@@ -91,17 +89,13 @@ Route::get('/planes', [\App\Http\Controllers\SuscripcionController::class, 'inde
 
 
 Route::get('/crear-preferencia', [MercadoPagoController::class, 'crearPreferencia']);
+
+
+Route::get('/planes/starter', [\App\Http\Controllers\SuscripcionController::class, 'pro'])->name('planes.starter');
+
+
+Route::get('/planes/pro', [\App\Http\Controllers\SuscripcionController::class, 'pro'])->name('planes.pro');
+
+Route::get('/planes/senior', [\App\Http\Controllers\SuscripcionController::class, 'senior'])->name('planes.senior');
+
 //{"id":"3202141953-5f840558-b090-4ece-9552-cd4dc8408f80"}
-
-
-Route::get('/planes/pro', function () {
-    return view('pricing.pro');
-})->name('planes.pro');
-
-Route::get('/planes/starter', function () {
-    return view('pricing.starter');
-})->name('planes.starter');
-
-Route::get('/planes/senior', function () {
-    return view('pricing.senior');
-})->name('planes.senior');

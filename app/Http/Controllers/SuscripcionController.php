@@ -11,4 +11,19 @@ class SuscripcionController extends Controller
     {
         return view('pricing.subscription');
     }
+
+    public function pro()
+    {
+        return view('pricing.pro');
+    }
+
+    public function starter()
+    {
+        return view('pricing.starter');
+    }
+
+    public function senior()
+    {
+        return view('pricing.senior');
+    }
 }

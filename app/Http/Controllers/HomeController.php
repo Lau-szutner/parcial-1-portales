@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::take(3)->get();
+        $articles = Article::take(6)->get();
 
         return view('home', [
             'articles' => $articles,

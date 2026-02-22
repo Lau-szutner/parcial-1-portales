@@ -9,35 +9,34 @@ use Illuminate\Http\Request;
 
 class CursosController extends Controller
 {
-    public function perfil()
-    {
-        /** @var \App\Models\User $user */
-        $user = Auth::user(); // Obtiene el usuario autenticado
-
-        // Traemos los cursos
-        $cursos = $user->cursos;
-
-        // OBTENER LA SUSCRIPCIÓN
-        // Usamos first() para obtener el objeto con los datos, 
-        // y opcionalmente ordenamos por la más reciente.
-        $subscription = $user->subscriptions()->where('status', 'active')->latest()->first();
-
-        // Pasamos todo a la vista
-        return view('user.cursos', [
-            'cursos' => $cursos,
-            'usuario' => $user->name,
-            'subscription' => $subscription, // <--- Ahora la vista la reconoce
-        ]);
-    }
-
-
     public function index()
     {
-        $cursos = Curso::all(); // Obtiene todos los cursos de la base de datos
+        $cursos = Curso::all();
         return view('cursos.index', [
             'cursos' => $cursos,
         ]);
     }
+
+    public function perfil()
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        $cursos = $user->cursos;
+
+        $subscription = $user->subscriptions()->where('status', 'active')->latest()->first();
+
+
+        return view('user.cursos', [
+            'cursos' => $cursos,
+            'usuario' => $user->name,
+            'subscription' => $subscription,
+        ]);
+    }
+
+
+
+    // REVISAR DE ENVIAR A UN CONTROLADOR DE USER Y USAR AUTH MIDDLEWARE
     public function add_curso($id)
     {
         /** @var \App\Models\User $user */

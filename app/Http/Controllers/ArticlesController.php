@@ -15,12 +15,10 @@ class ArticlesController extends Controller
         ]);
     }
 
-    public function view(int $id)
+    public function view(Article $article)
     {
-        // Obtener el artículo por su ID, incluyendo los tópicos
-        $article = Article::with('topics')->findOrFail($id);
+        $article->load('topics', 'nivel');
 
-        // Pasar el artículo a la vista
         return view('articles.view', [
             'article' => $article,
         ]);

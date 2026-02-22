@@ -141,7 +141,7 @@
                     </p>
 
                     {{-- Enlace inferior estilizado --}}
-                    <a href="{{ route('articles.view', ['id' => $article->id]) }}"
+                    <a href="{{ route('articles.view', $article) }}"
                         class="mt-auto pt-6 border-t border-slate-50 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-900 group-hover:text-indigo-600 transition-all duration-300">
                         <span>Continuar leyendo</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -70,7 +70,7 @@
                     <a href="{{ route('dashboard') }}"
                         class="px-4 py-2 text-sm font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Admin</a>
                     @else
-                    <a href="{{ route('user.cursos') }}"
+                    <a href="{{ route('student.dashboard') }}"
                         class="px-4 py-2 text-sm font-bold uppercase tracking-widest bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-all">Perfil</a>
                     @endif
 

@@ -22,16 +22,14 @@ class UserController extends Controller
     // Método para actualizar el perfil del usuario
     public function updateProfile(Request $request)
     {
-        // Obtiene al usuario autenticado
+
         $user = Auth::user();
 
-        // Valida los datos del formulario (ajustar reglas según sea necesario)
         $request->validate([
             'nombre' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            // Otras reglas de validación para los campos del perfil
-        ]);
 
+        ]);
 
         return redirect()->route('profile')->with('success', 'Perfil actualizado con éxito.');
     }

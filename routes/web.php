@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MercadoPagoController;
 use App\Http\Controllers\SuscripcionController;
 use App\Http\Controllers\ArticlesController;
-use App\Http\Controllers\CursosController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
@@ -17,7 +17,8 @@ use App\Http\Controllers\RegisterController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos.index');
 Route::get('/crear-preferencia', [MercadoPagoController::class, 'crearPreferencia']);
 
 /*
@@ -25,6 +26,7 @@ Route::get('/crear-preferencia', [MercadoPagoController::class, 'crearPreferenci
 | Rutas de Autenticación y Registro (Públicas)
 |--------------------------------------------------------------------------
 */
+
 Route::get('/login', [DashboardController::class, 'login'])->name('login');
 
 Route::controller(RegisterController::class)->group(function () {
@@ -38,11 +40,7 @@ Route::controller(RegisterController::class)->group(function () {
 | Rutas Protegidas (Requieren Auth)
 |--------------------------------------------------------------------------
 */
-/*
-|--------------------------------------------------------------------------
-| Rutas Protegidas Generales (Requieren Auth)
-|--------------------------------------------------------------------------
-*/
+
 Route::middleware(['auth'])->group(function () {
 
     // Perfil de Usuario (/profile)
@@ -51,8 +49,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', 'updateProfile')->name('profile.update');
     });
 
-    // Cursos del usuario
-    Route::get('/cursos/user', [CursosController::class, 'perfil'])->name('user.cursos');
+
+    Route::prefix('student')->controller(StudentController::class)->group(function () {
+
+        Route::get('/dashboard', 'profile')->name('student.dashboard');
+        Route::post('/{curso}/add', [StudentController::class, 'add_curso'])->name('add.curso');
+    });
 });
 
 /*
@@ -108,10 +110,10 @@ Route::controller(ArticlesController::class)->group(function () {
 | Rutas de Cursos (/cursos)
 |--------------------------------------------------------------------------
 */
-Route::prefix('cursos')->controller(CursosController::class)->group(function () {
-    Route::get('/', 'index')->name('cursos.index');
-    Route::get('/user', 'perfil')->name('user.cursos');
-    Route::post('/{curso}/add', 'add_curso')->name('add.curso');
-});
+// Route::controller(HomeController::class)->group(function () {
+//     Route::get('/', 'cursos')->name('cursos.index');
+//     // Route::get('/user', 'perfil')->name('user.cursos');
+//     // Route::post('/{curso}/add', 'add_curso')->name('add.curso');
+// });
 
 // ID de seguimiento: {"id":"3202141953-5f840558-b090-4ece-9552-cd4dc8408f80"}

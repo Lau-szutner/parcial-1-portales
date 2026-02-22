@@ -10,15 +10,12 @@ class UserController extends Controller
     // Método para mostrar el perfil
     public function profile()
     {
-        // Verifica el rol del usuario autenticado
         $user = Auth::user();
 
         if ($user->rol === 'admin') {
-            // Redirige a la vista de administración si el rol es "admin"
             return redirect()->route('dashboard');
         } else {
-            // Redirige a la vista de perfil de usuario si es un usuario normal
-            return view('user.profile'); // Asegúrate de tener esta vista creada
+            return view('user.profile');
         }
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Curso;
 use App\Models\Nivel;
 use App\Models\User;
 use App\Models\Topic;
@@ -41,11 +42,13 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $articles = Article::all();
+        $cursos = Curso::all();
         // Obtén todos los usuarios con sus cursos
         $users = User::with('cursos')->get();
 
         return view('admin.dashboard', [
             'articles' => $articles,
+            'cursos' => $cursos,
             'users' => $users, // Pasamos los usuarios y cursos a la vista
         ]);
     }

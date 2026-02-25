@@ -92,6 +92,8 @@ Route::prefix('admin')->controller(DashboardController::class)->group(function (
             Route::get('/create', 'cursoCreate')->name('curso.create');
             Route::post('/store', 'cursoStore')->name('curso.store');
         });
+
+        Route::delete('/users/{user}', 'userDestroy')->name('user.destroy');
     });
 });
 

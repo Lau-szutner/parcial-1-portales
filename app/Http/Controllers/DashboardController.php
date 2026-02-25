@@ -250,4 +250,17 @@ public function cursoCreate()
     return redirect()->route('dashboard')
         ->with('feedback.message', '¡Curso creado con éxito!');
 }
+
+    public function userDestroy(User $user)
+    {
+        $user->cursos()->detach();
+
+        $user->subscriptions()->delete();
+
+        $user->delete();
+
+        return redirect()->route('dashboard')
+            ->with('feedback.message', 'Usuario eliminado exitosamente.')
+            ->with('feedback.type', 'success');
+    }
 }

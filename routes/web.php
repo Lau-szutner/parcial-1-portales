@@ -74,11 +74,23 @@ Route::prefix('admin')->controller(DashboardController::class)->group(function (
         Route::post('/create', 'store')->name('store');
         Route::post('/dashboard/logout', 'doLogout')->name('admin.doLogout');
 
+
+
         Route::prefix('dashboard/{id}')->group(function () {
             Route::get('/eliminar', 'delete')->name('article.delete');
             Route::post('/destruir', 'destroy')->name('article.destroy');
             Route::get('/editar', 'edit')->name('article.edit');
             Route::put('/publicar', 'update')->name('article.update');
+        });
+
+        Route::prefix("dashboard/cursos/{id}")->group(function(){
+            Route::get('/eliminar', 'cursoDelete')->name('curso.delete');
+            Route::delete('/destruir', 'cursoDestroy')->name('curso.destroy');
+        });
+
+        Route::prefix("dashboard/cursos")->group(function(){
+            Route::get('/create', 'cursoCreate')->name('curso.create');
+            Route::post('/store', 'cursoStore')->name('curso.store');
         });
     });
 });

@@ -105,6 +105,7 @@ class DashboardController extends Controller
             'article' =>  Article::findOrFail($id)
         ]);
     }
+
     public function destroy(int $id)
     {
         $article =  Article::findOrFail($id);
@@ -134,35 +135,27 @@ class DashboardController extends Controller
 
     public function update(Request $request, int $id)
     {
-        // 1. Tomamos las reglas base y cambiamos 'required' por 'nullable'
         $rules = $this->validationRules;
         $rules['img'] = 'nullable|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048';
 
-        // 2. Validamos con las reglas modificadas
         $request->validate($rules, $this->validationMessages);
 
         $article = Article::findOrFail($id);
 
-        // 3. Preparamos los datos (filtramos lo que no va a la tabla articles)
         $data = $request->except(['_token', '_method', 'topicos_fk', 'img']);
 
-        // 4. Aseguramos el autor desde el usuario logueado
         $data['author'] = Auth::user()->name;
 
-        // 5. Si el usuario subió una imagen (WebP, AVIF, etc.), la procesamos
         if ($request->hasFile('img')) {
             $image = $request->file('img');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('images'), $imageName);
 
-            // Guardamos la nueva ruta en el array de datos
             $data['img'] = 'images/' . $imageName;
         }
 
-        // 6. Actualizamos los campos de texto e imagen (si se cambió)
         $article->update($data);
 
-        // 7. Sincronizamos los tópicos en la tabla intermedia
         $article->topics()->sync($request->input('topicos_fk', []));
 
         return redirect()
@@ -200,4 +193,61 @@ class DashboardController extends Controller
             ->route('home')
             ->with('feedback.message', 'Sesion cerrada');
     }
+
+public function cursoCreate()
+{
+    
+    return view('admin.cursoCreate', [
+        'nivels' => Nivel::all(), 
+        'topics' => Topic::all()
+    ]);
+}
+
+    public function cursoDelete(int $id)
+    {
+        return view('admin.cursoDelete', [
+            'curso' =>  Curso::findOrFail($id)
+        ]);
+    }
+    
+    public function cursoDestroy(int $id)
+    {
+        $curso = Curso::findOrFail($id);
+
+        $curso->users()->detach();
+
+        $curso->delete();
+
+        return redirect()->route('dashboard')
+            ->with('feedback.message', 'El curso y sus inscripciones han sido eliminados.')
+            ->with('feedback.type', 'success');
+    }
+
+    public function cursoStore(Request $request) 
+{
+    $request->validate([
+        'nombre'      => 'required|min:5|max:100',
+        'descripcion' => 'required|min:20',
+        'duracion'    => 'required|numeric|min:1',
+        'nivel'       => 'required|in:1,2,3',
+        'imagen'      => 'required|image|mimes:jpg,png,jpeg|max:2048', // Cambiado a required
+    ]);
+
+    $data = $request->all();
+
+    // Gestión de la imagen
+    if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        $nombreImagen = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('img/cursos'), $nombreImagen);
+        
+        // ESTA LÍNEA ES VITAL: añade la ruta al array que va a la DB
+        $data['imagen'] = 'img/cursos/' . $nombreImagen;
+    }
+
+    Curso::create($data);
+
+    return redirect()->route('dashboard')
+        ->with('feedback.message', '¡Curso creado con éxito!');
+}
 }

@@ -46,7 +46,7 @@ class StudentController extends Controller
 
         
         if (!$subscription) {
-            return redirect()->route('user.cursos')
+            return redirect()->route('student.dashboard')
                 ->with('error', "No tienes una suscripción activa para inscribirte.");
         }
 

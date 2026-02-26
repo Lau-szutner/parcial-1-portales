@@ -36,7 +36,7 @@ class StudentController extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
-        // 1. Buscamos el curso o lanzamos 404 si no existe
+
         $curso = Curso::findOrFail($id);
 
         // 2. Buscamos la suscripción activa
@@ -46,7 +46,7 @@ class StudentController extends Controller
             ->latest()
             ->first();
 
-        // 3. ¡IMPORTANTE! Validar si el usuario tiene suscripción antes de leer el nivel
+        
         if (!$subscription) {
             return redirect()->route('user.cursos')
                 ->with('error', "No tienes una suscripción activa para inscribirte.");
@@ -54,13 +54,13 @@ class StudentController extends Controller
 
         $subscriptionLevel = $subscription->plan_level;
 
-        // 4. Validación de nivel
+
         if ($curso->nivel > $subscriptionLevel) {
-            return redirect()->route('user.cursos')
+            return redirect()->route('student.dashboard')
                 ->with('error', "Tu suscripción actual es nivel {$subscriptionLevel}. Este curso requiere nivel {$curso->nivel}.");
         }
 
-        // 5. Inscribir (syncWithoutDetaching evita duplicados en la tabla pivote)
+
         $user->cursos()->syncWithoutDetaching([$id]);
 
         return redirect()->route('student.dashboard')

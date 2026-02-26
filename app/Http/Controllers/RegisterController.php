@@ -28,10 +28,8 @@ class RegisterController extends Controller
             "password" => "required|string|min:8|confirmed"
         ]);
 
-        // 1. Creamos el usuario
         $user = User::create($validated);
 
-        // 2. Creamos la suscripción inicial vinculada a este usuario
         $user->subscriptions()->create([
             'plan_level' => 1,
             'status' => 'active',
@@ -41,8 +39,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        // Un pequeño tip: si acabas de loguear al usuario, 
-        // quizás quieras mandarlo al "perfil" o "home" en lugar de "login"
-        return redirect()->route("login")->with('success', '¡Bienvenido! Tu plan Starter está activo.');
+        return redirect()->route("home")->with('success', '¡Bienvenido! Tu plan Starter está activo.');
     }
 }

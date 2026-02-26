@@ -24,6 +24,8 @@
                 <span class="text-red-800 font-bold text-sm uppercase tracking-wider">Por favor, revisa los errores en el formulario</span>
             </div>
         </div>
+
+        
         @endif
 
         {{-- Formulario de Creación --}}

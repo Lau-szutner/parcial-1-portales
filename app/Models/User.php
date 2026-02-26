@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Curso; // Importa el modelo Curso
+use App\Models\Curso; 
 
 class User extends Authenticatable
 {
@@ -55,10 +55,10 @@ class User extends Authenticatable
     public function cursos(): BelongsToMany
     {
         return $this->belongsToMany(
-            Curso::class,             // Modelo relacionado
-            'users_have_cursos',      // Tabla intermedia
-            'user_id',                // Clave foránea en la tabla intermedia para el modelo User
-            'cursos_id'               // Clave foránea en la tabla intermedia para el modelo Curso
+            Curso::class,           
+            'users_have_cursos',      
+            'user_id',                
+            'cursos_id'               
         );
     }
 

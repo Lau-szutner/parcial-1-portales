@@ -25,9 +25,10 @@ class DashboardController extends Controller
         'title' => 'required|string|min:2',
         'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048',
         'category' => 'required|string|min:2',
-        'time' => 'required|string|min:10',
+        'time' => 'required|numeric|min:1', 
         'body' => 'required|string|min:10',
-        'excerpt' => 'required|string',
+        'excerpt' => 'required|string|min:5',
+        'nivel_fk' => 'required|exists:nivels,nivel_id', 
     ];
 
     private array $validationMessages = [
@@ -43,13 +44,12 @@ class DashboardController extends Controller
     {
         $articles = Article::all();
         $cursos = Curso::all();
-        // Obtén todos los usuarios con sus cursos
         $users = User::with('cursos')->get();
 
         return view('admin.dashboard', [
             'articles' => $articles,
             'cursos' => $cursos,
-            'users' => $users, // Pasamos los usuarios y cursos a la vista
+            'users' => $users, 
         ]);
     }
 
@@ -71,13 +71,10 @@ class DashboardController extends Controller
 
         $request->validate($this->validationRules, $this->validationMessages);
 
-        // 2. Preparar los datos (Quitamos el token y los tópicos de entrada)
         $data = $request->except(['_token', 'topicos_fk']);
 
-        // 3. LOGICA DEL AUTOR: Extraer del usuario autenticado e inyectar en $data
         $data['author'] = Auth::user()->name;
 
-        // 4. Manejo de la imagen
         if ($request->hasFile('img')) {
             $image = $request->file('img');
             $imageName = time() . '_' . $image->getClientOriginalName();
@@ -85,10 +82,8 @@ class DashboardController extends Controller
             $data['img'] = 'images/' . $imageName;
         }
 
-        // 5. Crear el artículo con los datos que ya incluyen el 'author'
         $article = Article::create($data);
 
-        // 6. Asociar tópicos
         if ($request->has('topicos_fk')) {
             $article->topics()->sync($request->input('topicos_fk'));
         }
@@ -125,7 +120,6 @@ class DashboardController extends Controller
 
         $topics = Topic::all();
 
-        // 4. Le entregamos las 3 cosas a la vista
         return view('admin.edit', [
             'article' => $article,
             'nivels'  => $nivels,
@@ -172,14 +166,14 @@ class DashboardController extends Controller
             return redirect()
                 ->route('login')
                 ->with('feedback.message', 'Las credenciales son incorrectas')
-                ->with('feedback.type', 'error') // Establecer el tipo de mensaje
+                ->with('feedback.type', 'error') 
                 ->withInput();
         }
 
         return redirect()
             ->route('dashboard')
             ->with('feedback.message', 'Sesión iniciada')
-            ->with('feedback.type', 'success'); // Establecer el tipo de mensaje
+            ->with('feedback.type', 'success'); 
     }
 
 
@@ -270,18 +264,16 @@ public function cursoCreate()
         'descripcion' => 'required|min:20',
         'duracion'    => 'required|numeric|min:1',
         'nivel'       => 'required|in:1,2,3',
-        'imagen'      => 'required|image|mimes:jpg,png,jpeg|max:2048', // Cambiado a required
+        'imagen'      => 'required|image|mimes:jpg,png,jpeg|max:2048',
     ]);
 
     $data = $request->all();
 
-    // Gestión de la imagen
+
     if ($request->hasFile('imagen')) {
         $file = $request->file('imagen');
         $nombreImagen = time() . '_' . $file->getClientOriginalName();
         $file->move(public_path('img/cursos'), $nombreImagen);
-        
-        // ESTA LÍNEA ES VITAL: añade la ruta al array que va a la DB
         $data['imagen'] = 'img/cursos/' . $nombreImagen;
     }
 

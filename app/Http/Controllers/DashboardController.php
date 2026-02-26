@@ -223,6 +223,46 @@ public function cursoCreate()
             ->with('feedback.type', 'success');
     }
 
+    public function cursoEdit(int $id)
+    {
+        $curso = Curso::findOrFail($id);
+
+        return view('admin.cursoEdit', [
+            'curso' => $curso,
+            'nivels' => Nivel::all(),
+            'topics' => Topic::all()
+        ]);
+    }
+
+    public function cursoUpdate(Request $request, int $id)
+    {
+        $curso = Curso::findOrFail($id);
+
+        $request->validate([
+            'nombre'      => 'required|min:5|max:100',
+            'descripcion' => 'required|min:20',
+            'duracion'    => 'required|numeric|min:1',
+            'nivel'       => 'required|in:1,2,3',
+            'imagen'      => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        $data = $request->except(['_token', '_method']);
+
+        // Gestión de la imagen
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $nombreImagen = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img/cursos'), $nombreImagen);
+            $data['imagen'] = 'img/cursos/' . $nombreImagen;
+        }
+
+        $curso->update($data);
+
+        return redirect()->route('dashboard')
+            ->with('feedback.message', 'El curso <b>' . e($curso->nombre) . '</b> se editó exitosamente')
+            ->with('feedback.type', 'success');
+    }
+
     public function cursoStore(Request $request) 
 {
     $request->validate([

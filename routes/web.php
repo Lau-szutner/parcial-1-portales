@@ -86,6 +86,8 @@ Route::prefix('admin')->controller(DashboardController::class)->group(function (
         Route::prefix("dashboard/cursos/{id}")->group(function(){
             Route::get('/eliminar', 'cursoDelete')->name('curso.delete');
             Route::delete('/destruir', 'cursoDestroy')->name('curso.destroy');
+            Route::get('/editar', 'cursoEdit')->name('curso.edit');
+            Route::put('/actualizar', 'cursoUpdate')->name('curso.update');
         });
 
         Route::prefix("dashboard/cursos")->group(function(){

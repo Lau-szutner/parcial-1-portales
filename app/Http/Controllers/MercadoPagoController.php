@@ -23,7 +23,7 @@ class MercadoPagoController extends Controller
                 ]
             ],
             "back_urls" => [
-                "success" => "http://127.0.0.1:8000/user/cursos",
+                "success" => "http://127.0.0.1:8000/student/dashboard",
                 "failure" => "http://127.0.0.1:8000/planes",
                 "pending" => "http://127.0.0.1:8000/"
             ],

@@ -12,7 +12,7 @@ $nombresNiveles = [
 ];
 @endphp
 <x-layout>
-    <x-slot:title>Cursos Disponibles</x-slot:title>
+    <x-slot:title>Cursos</x-slot:title>
 
     <div class="container mx-auto px-6 py-16 flex flex-col items-center">
         <div class="text-center mb-20 opacity-0 animate-fade-in transition-all duration-1000 ease-out"

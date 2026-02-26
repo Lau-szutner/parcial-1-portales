@@ -30,7 +30,7 @@ $nombresNiveles = [
         @endphp
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 w-full max-w-6xl">
-            <!-- Container para o botão de pagamento -->
+            
 
             @foreach ($cursos as $index => $curso)
             <div class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-slate-100 transition-all duration-500 ease-in-out transform hover:-translate-y-2">

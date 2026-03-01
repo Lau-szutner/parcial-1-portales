@@ -11,10 +11,8 @@ class Curso extends Model
 {
     use HasFactory;
 
-    // Especifica la tabla asociada
     protected $table = 'cursos';
 
-    // Especifica los campos que son asignables en masa
     protected $fillable = [
         'nombre',
         'descripcion',
@@ -32,10 +30,10 @@ class Curso extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(
-            User::class,             // Modelo relacionado
-            'users_have_cursos',     // Tabla intermedia
-            'cursos_id',             // Clave foránea en la tabla intermedia para el modelo Curso
-            'user_id'                // Clave foránea en la tabla intermedia para el modelo User
+            User::class,            
+            'users_have_cursos',     
+            'cursos_id',             
+            'user_id'               
         );
     }
 }

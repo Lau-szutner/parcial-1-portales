@@ -9,7 +9,6 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    // Campos que permitimos llenar (importante para el Seeder)
     protected $fillable = [
         'user_id',
         'plan_name',
@@ -18,7 +17,6 @@ class Subscription extends Model
         'ends_at',
     ];
 
-    // Indicar que estos campos deben tratarse como fechas (objetos Carbon)
     protected $casts = [
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',

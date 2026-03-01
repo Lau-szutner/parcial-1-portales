@@ -29,8 +29,6 @@ class StudentController extends Controller
     }
 
 
-
-    // REVISAR DE ENVIAR A UN CONTROLADOR DE USER Y USAR AUTH MIDDLEWARE
     public function add_curso($id)
     {
         /** @var \App\Models\User $user */
@@ -39,7 +37,7 @@ class StudentController extends Controller
 
         $curso = Curso::findOrFail($id);
 
-        // 2. Buscamos la suscripción activa
+
         $subscription = $user->subscriptions()
             ->where('status', 'active')
             ->where('ends_at', '>', now())
@@ -48,7 +46,7 @@ class StudentController extends Controller
 
         
         if (!$subscription) {
-            return redirect()->route('user.cursos')
+            return redirect()->route('student.dashboard')
                 ->with('error', "No tienes una suscripción activa para inscribirte.");
         }
 

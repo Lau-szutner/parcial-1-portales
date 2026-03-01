@@ -13,16 +13,6 @@
 
 
 
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
-    </style>
 </head>
 
 <body class="font-sans bg-slate-50 min-h-screen flex flex-col text-slate-900">

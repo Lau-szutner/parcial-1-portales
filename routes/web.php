@@ -119,15 +119,3 @@ Route::controller(ArticlesController::class)->group(function () {
     Route::get('/articulos/{article}', 'view')->name('articles.view');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Rutas de Cursos (/cursos)
-|--------------------------------------------------------------------------
-*/
-// Route::controller(HomeController::class)->group(function () {
-//     Route::get('/', 'cursos')->name('cursos.index');
-//     // Route::get('/user', 'perfil')->name('user.cursos');
-//     // Route::post('/{curso}/add', 'add_curso')->name('add.curso');
-// });
-
-// ID de seguimiento: {"id":"3202141953-5f840558-b090-4ece-9552-cd4dc8408f80"}

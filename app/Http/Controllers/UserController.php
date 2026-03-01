@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // Método para mostrar el perfil
     public function profile()
     {
         $user = Auth::user();
@@ -19,7 +18,6 @@ class UserController extends Controller
         }
     }
 
-    // Método para actualizar el perfil del usuario
     public function updateProfile(Request $request)
     {
 

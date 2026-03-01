@@ -49,7 +49,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', 'updateProfile')->name('profile.update');
     });
 
-
     Route::prefix('student')->controller(StudentController::class)->group(function () {
 
         Route::get('/dashboard', 'profile')->name('student.dashboard');
@@ -62,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
 | Administración (/admin) - FUERA del grupo auth general
 |--------------------------------------------------------------------------
 */
+
 Route::prefix('admin')->controller(DashboardController::class)->group(function () {
 
 
@@ -73,8 +73,6 @@ Route::prefix('admin')->controller(DashboardController::class)->group(function (
         Route::get('/create', 'create')->name('create');
         Route::post('/create', 'store')->name('store');
         Route::post('/dashboard/logout', 'doLogout')->name('admin.doLogout');
-
-
 
         Route::prefix('dashboard/{id}')->group(function () {
             Route::get('/eliminar', 'delete')->name('article.delete');
